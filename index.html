@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kim Purcell</title>
+    <meta name="description" content="Novelist, Writing Teacher & Creativity Coach" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Serif for headings; clean sans for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#view">Skip to content</a>
+
+    <!-- ===== Persistent top block ===== -->
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <h1 class="site-title">Kim Purcell</h1>
+        <p class="site-tagline">Novelist, Writing Teacher &amp; Creativity Coach</p>
+      </div>
+
+      <!-- Top bar matches PDF feel: light bar, centered nav, clear separators -->
+      <div class="topbar" id="primary-nav">
+        <div class="container topbar-inner">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav-list" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+          </button>
+          <nav class="site-nav" role="navigation" aria-label="Primary">
+            <ul id="primary-nav-list">
+              <li><a href="#home" data-route="home" class="nav-link is-active">Home</a></li>
+              <li><a href="#books" data-route="books" class="nav-link">Books</a></li>
+              <li><a href="#classes" data-route="classes" class="nav-link">Writing Classes</a></li>
+              <li><a href="#contact" data-route="contact" class="nav-link">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Swappable bottom view (Home rendered initially) ===== -->
+    <main id="view" class="container view" role="main" tabindex="-1"></main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <small>&copy; <span id="year"></span> Kim Purcell</small>
+      </div>
+    </footer>
+
+    <script type="module" src="./dist/app.js"></script>
+  </body>
+</html>
