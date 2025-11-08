@@ -1,5 +1,4 @@
 // Persistent top (name + tagline + top bar). Bottom #view swaps via hash routes.
-// Colors/structure match the PDF; Home view includes kim.jpg, social row, and two books.
 
 type Route = 'home' | 'books' | 'classes' | 'contact';
 
@@ -18,9 +17,11 @@ function setActive(route: Route): void {
   });
 }
 
+/* ---------- Route views ---------- */
+
 function homeHTML(): string {
+  // HERO ONLY (portrait + about + CTA)
   return `
-    <!-- HERO -->
     <section class="hero">
       <img class="hero-img" src="assets/kim.jpg" alt="Kim Purcell portrait" />
       <div class="hero-copy">
@@ -38,18 +39,12 @@ function homeHTML(): string {
         <a class="cta" href="#classes" data-route="classes">Join a Writing Class Today!</a>
       </div>
     </section>
+  `;
+}
 
-    <!-- SOCIAL -->
-    <section class="social" aria-labelledby="social-title">
-      <h3 id="social-title">Find Kim On...</h3>
-      <div class="social-icons">
-        <a href="#" aria-label="Social link 1"><img src="assets/social-1.png" alt="" /></a>
-        <a href="#" aria-label="Social link 2"><img src="assets/social-2.png" alt="" /></a>
-        <a href="#" aria-label="Social link 3"><img src="assets/social-3.png" alt="" /></a>
-      </div>
-    </section>
-
-    <!-- BOOK: This Is Not a Love Letter -->
+function booksHTML(): string {
+  // BOTH BOOK SECTIONS MOVED HERE
+  return `
     <section class="section book">
       <img class="book-cover" src="assets/book-love-letter.jpg" alt="This Is Not a Love Letter cover" />
       <div>
@@ -67,7 +62,6 @@ function homeHTML(): string {
       </div>
     </section>
 
-    <!-- BOOK: Trafficked -->
     <section class="section book">
       <img class="book-cover" src="assets/book-trafficked.jpg" alt="Trafficked cover" />
       <div>
@@ -89,19 +83,81 @@ function homeHTML(): string {
   `;
 }
 
+function classesHTML(): string {
+  // SIMPLE CLASSES PAGE CONTENT
+  return `
+    <section class="section">
+      <h2>Writing Classes</h2>
+      <p>
+        Practical, encouraging workshops focused on finishing your book with less stress and more confidence.
+        All classes include weekly goals, feedback, and community support.
+      </p>
+      <ul class="classes-list">
+        <li><strong>Foundations:</strong> Build a sustainable writing habit and outline your novel.</li>
+        <li><strong>Draft in 100 Days:</strong> Guided milestones, accountability, and weekly check-ins.</li>
+        <li><strong>Revision Lab:</strong> Restructure scenes, sharpen prose, and prepare for submission.</li>
+      </ul>
+      <p style="margin-top:12px">
+        Curious which class fits you? <a href="#contact" data-route="contact">Get in touch</a> and I’ll recommend the best path.
+      </p>
+      <a class="btn" href="#contact" data-route="contact" aria-label="Contact about classes">Ask About Classes</a>
+    </section>
+  `;
+}
+
+function contactHTML(): string {
+  // SOCIAL ROW + CONTACT CARD
+  return `
+    <section class="social" aria-labelledby="social-title">
+      <h3 id="social-title">Find Kim On...</h3>
+      <div class="social-icons">
+        <a href="#" aria-label="Social link 1"><img src="assets/social-1.png" alt="" /></a>
+        <a href="#" aria-label="Social link 2"><img src="assets/social-2.png" alt="" /></a>
+        <a href="#" aria-label="Social link 3"><img src="assets/social-3.png" alt="" /></a>
+      </div>
+    </section>
+
+    <section class="section contact-card">
+      <h2>Contact</h2>
+      <p>Questions about books, classes, or events? Send a note:</p>
+      <form class="contact-form" onsubmit="return false">
+        <label for="name">Name</label>
+        <input id="name" name="name" autocomplete="name" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </section>
+  `;
+}
+
+/* ---------- Router ---------- */
+
 function render(route: Route): void {
   if (!view) return;
-  if (route !== 'home') {
-    view.innerHTML = `
-      <section class="section">
-        <h2 style="margin-top:0">Coming soon</h2>
-        <p>The top stays fixed; only this area will change when routes are implemented.</p>
-      </section>
-    `;
-    view.focus();
-    return;
+
+  switch (route) {
+    case 'home':
+      view.innerHTML = homeHTML();
+      break;
+    case 'books':
+      view.innerHTML = booksHTML();
+      break;
+    case 'classes':
+      view.innerHTML = classesHTML();
+      break;
+    case 'contact':
+      view.innerHTML = contactHTML();
+      break;
+    default:
+      view.innerHTML = `<section class="section"><h2>Not found</h2></section>`;
   }
-  view.innerHTML = homeHTML();
+
   view.focus();
 }
 
@@ -148,7 +204,7 @@ function init(): void {
   setYear();
   initNavToggle();
   initRouter();
-  if (view) view.setAttribute('tabindex', '-1'); // for skip-link/focus on route change
+  if (view) view.setAttribute('tabindex', '-1');
 }
 
 document.addEventListener('DOMContentLoaded', init);

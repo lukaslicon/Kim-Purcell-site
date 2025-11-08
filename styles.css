@@ -188,3 +188,13 @@ body{
   padding: 18px 0 40px; color: var(--muted);
   font-size: 14px; text-align: center;
 }
+
+/* Classes page list */
+.classes-list { margin: 8px 0 16px; padding-left: 18px; }
+
+/* Contact card & form */
+.contact-card { border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--gap); background: #fff; }
+.contact-form { display: grid; gap: 12px; max-width: 680px; }
+.contact-form input,
+.contact-form textarea { width: 100%; border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; font: inherit; }
+.contact-form button { align-self: start; }
