@@ -20,12 +20,10 @@ function setActive(route: Route): void {
 /* ---------- Route views ---------- */
 
 function homeHTML(): string {
-  // HERO ONLY (portrait + about + CTA)
   return `
     <section class="hero">
       <img class="hero-img" src="assets/kim.jpg" alt="Kim Purcell portrait" />
       <div class="hero-copy">
-        <h2>About</h2>
         <p>
           Kim Purcell is a novelist and writing teacher who helps kids, teens, and adults
           around the world finish their books and find joy in storytelling. She’s the author of
@@ -46,7 +44,7 @@ function booksHTML(): string {
   // BOTH BOOK SECTIONS MOVED HERE
   return `
     <section class="section book">
-      <img class="book-cover" src="assets/book-love-letter.jpg" alt="This Is Not a Love Letter cover" />
+      <img class="book-cover" src="assets/thisisnotaloveletter.jpg" alt="This Is Not a Love Letter cover" />
       <div>
         <h3>This Is Not a Love Letter</h3>
         <p>
@@ -56,14 +54,14 @@ function booksHTML(): string {
           rival school. Now, as one of the only Black kids in their depressed paper mill town, Jessie is terrified of what might have happened.
         </p>
         <p class="quote">
-          “[A] long, beautiful, heart-breaking love letter to potential and possibilities and hope...” – NPR Book Reviews
+          “A long, beautiful, heart-breaking love letter to potential and possibilities and hope...” – NPR Book Reviews
         </p>
         <a class="btn" href="#" aria-label="Buy This Is Not a Love Letter on Amazon">Buy on Amazon</a>
       </div>
     </section>
 
     <section class="section book">
-      <img class="book-cover" src="assets/book-trafficked.jpg" alt="Trafficked cover" />
+      <img class="book-cover" src="assets/trafficked.png" alt="Trafficked cover" />
       <div>
         <h3>Trafficked</h3>
         <p>
@@ -108,15 +106,6 @@ function classesHTML(): string {
 function contactHTML(): string {
   // SOCIAL ROW + CONTACT CARD
   return `
-    <section class="social" aria-labelledby="social-title">
-      <h3 id="social-title">Find Kim On...</h3>
-      <div class="social-icons">
-        <a href="#" aria-label="Social link 1"><img src="assets/social-1.png" alt="" /></a>
-        <a href="#" aria-label="Social link 2"><img src="assets/social-2.png" alt="" /></a>
-        <a href="#" aria-label="Social link 3"><img src="assets/social-3.png" alt="" /></a>
-      </div>
-    </section>
-
     <section class="section contact-card">
       <h2>Contact</h2>
       <p>Questions about books, classes, or events? Send a note:</p>
