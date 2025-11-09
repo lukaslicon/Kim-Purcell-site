@@ -11,6 +11,11 @@ function setYear(): void {
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 }
 
+if (view && view.focus) view.focus({ preventScroll: true });
+
+window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); // or 'smooth'
+
+
 function setActive(route: Route): void {
   document.querySelectorAll<HTMLAnchorElement>('.nav-link').forEach(a => {
     a.classList.toggle('is-active', (a.dataset.route as Route) === route);
@@ -34,7 +39,7 @@ function homeHTML(): string {
           (Penguin's Ten Speed Press), draws on her twenty years of teaching thousands of
           writers to reach their creative goals with less stress and more confidence.
         </p>
-        <a class="cta" href="#classes" data-route="classes">Join a Writing Class Today!</a>
+        <a class="book-btn" href="#classes" data-route="classes">Join a Writing Class Today!</a>
       </div>
     </section>
   `;
@@ -59,7 +64,12 @@ function booksHTML(): string {
         <p1>
           “A long, beautiful, heart-breaking love letter to potential and possibilities and hope...” - NPR Book Reviews
         </p1>
-        
+        <p1>“Part love story, part mystery, this brave novel will make you feel, wonder, and think.” –Tamara Ireland Stone, New York Times best-selling author of Every Last Word
+        </p1>
+        <p class="left-middle-smaller no-bubble"><b>NPR'S BEST BOOKS OF 2018</b></p>
+        <p class="left-middle-smaller no-bubble"><b>A MIGHTY GIRL BOOK OF 2018</b></p>
+        <p class="left-middle-smaller no-bubble"><b>STARRED KIRKUS REVIEW</b></p>
+       
       </div>
     </section>
 
@@ -81,22 +91,27 @@ function booksHTML(): string {
           “Purcell's well-researched look into human trafficking has the slow pull of a dawning nightmare ...
           Gritty, realistic, and eye-opening.” - Booklist
         </p1>
+        <p class="left-middle-smaller no-bubble"><b>Bankstreet College of Education Best Children's Books of 2013 - 14 and Older</b></p>
+        <p class="left-middle-smaller no-bubble"><b>Eliot Rosewater Indiana High Shool Book Award List 2013</b></p>
       </div>
     </section>
 
     
-    <section class="section classes">
-      <figure class="classes-figure">
-        <img class="classes-img" src="assets/tenspeeds.png" alt="publisher logo" />
+    <section class="section bookwriting">
+      <figure class="classes-figure-small">
+        <img class="classes-img-small" src="assets/tenspeeds.png" alt="publisher logo" />
       </figure>
 
       <p class="classes-lede">
         Penguin is publishing my writing craft book!
       </p>
-      <p class="classes-body">
-        Penguin's Ten Speed Press is publishing my writing craft book, The Busy Writer's Guide to Finishing a Novel in 100 Days. This press has published two of my favorite writing craft books, Story Genius by Lisa Cron and Save the Cat by Blake Snyder. More great news: Donald Maass, one of my favorite craft book writers, has offered to write the foreword. If you've been in my classes, you know I love all of his craft books, especially Writing the Breakout Novel. In my book on writing, I take a progressive approach to writing, since this is how people learn anything, and this is how I help busy people finish books.</a>.
-      </p>
-      <h4 class="left-head">What is the Busy Writer Method?</h4>
+      <p class="left-middle">Penguin's Ten Speed Press is publishing my writing craft book, The Busy Writer's Guide to Finishing a Novel in 100 Days. This press has published two of my favorite writing craft books, Story Genius by Lisa Cron and Save the Cat by Blake Snyder. More great news: Donald Maass, one of my favorite craft book writers, has offered to write the foreword. If you've been in my classes, you know I love all of his craft books, especially Writing the Breakout Novel. In my book on writing, I take a progressive approach to writing, since this is how people learn anything, and this is how I help busy people finish books.</p>
+      <h4 class="left-middle">What is the Busy Writer Method?</h4>
+      <p class="left-middle"> Nowadays, everyone is busy: kids, teens, adults. So, how do you fit in the dream of writing a book? The Busy Writer Method is a faster and easier method of writing a book. It's based on research, my experience as a mom and novelist, a journalism degree and an MFA, and twenty years of teaching experience. I've taught thousands of people all over the world how to write, finish, and publish their books using this method.</p>
+      <h4 class="left-middle">How does it work? You write for at least 15 minutes a day and build your skills in a progressive way.</h4>
+      <p class="left-middle">When you learn any new skill, you need to build your skills from the basics. There are progressive skills for storytelling and novel-writing as well. Unfortunately, most of the time it's usually not taught in this way. You're thrown into the deep end. No wonder you feel like you're drowning!.</p>
+      <p class="left-middle">In my class and in my guide, I help you build these skills in a progressive way as you write your draft.  First, develop the characters and the world. Then, you come up with a coherent plot, based on a four-act plot structure. I will give you skills for every time you sit down so you never feel overwhelmed or stuck. You simply open the guide and you know exactly what to do. Dive into your imagination for a minimum of 15 minutes a day and you'll finish a book. I can't wait to cheer you on!</p>
+
     </section>  
 
   `;
@@ -113,8 +128,8 @@ function classesHTML() {
       </figure>
 
       <p class="classes-lede">
-        Does your kid have a passion for storytelling and want to write a book?
-        Let me help help them accomplish your goals. Sign them up for one of my
+        Do you have a passion for storytelling and want to write a book?
+        Let me help them accomplish your goals. Sign them up for one of my
         fun and uplifting classes for kids and teens!
       </p>
 
@@ -216,6 +231,14 @@ function classesHTML() {
 function contactHTML(): string {
   // SOCIAL ROW + CONTACT CARD
   return `
+    <section class="section contactwriting">
+      <h4 class="classes-lede">Privates, Editing, and Publishing for Adults and Kids</h4>
+      <p class="classes-body"><b>Cost for Privates:</b> 100 for an hour of online live instruction. (On Outschool, it's 100 for 45 minutes). For live in-person in Santa Monica or Culver City, it's 150 per hour. </p>
+      <p class="classes-body"><b>Cost for Editing: </b> I do developmental editing for 100 an hour. I can read and give feedback on around 5000-7500 words in that time period, depending on how much work it needs. </p>
+    </section>
+      <p class="classes-lede-smaller">
+        I help writers publish their books on Lulu.com and Amazon. You can follow my free YouTube video tutorial, or I can guide you through the process for my hourly rate of $100. If you prefer a full-service option where I handle everything, prices range from $500 to $5000 depending on the manuscript’s length, format, and extras. The publishing tutorial is below. 
+      </p>
     <section class="section contact-card">
       <h2>Contact</h2>
       <p>Questions about books, classes, or events? Send a note:</p>
@@ -229,7 +252,7 @@ function contactHTML(): string {
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="5" required></textarea>
 
-        <button class="btn" type="submit">Send</button>
+        <button class="book-btn" type="submit">Send</button>
       </form>
     </section>
   `;
@@ -298,6 +321,16 @@ function initNavToggle(): void {
     navToggle.setAttribute('aria-expanded', (!expanded).toString());
   });
 }
+
+document.querySelectorAll('.nav-link').forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault(); 
+    const route = a.dataset.route;           // 'books', 'classes', etc.
+    history.pushState({}, '', `#/${route}`); // avoids anchor jump
+    render(route);                           // your render function
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
+});
 
 function init(): void {
   setYear();

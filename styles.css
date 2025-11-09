@@ -42,7 +42,10 @@ body::before{
 
 /* ========= Persistent top block ========= */
 .site-header{
-  position: sticky; top: 0; z-index: 40; background: var(--bg);
+  position: sticky; 
+  top: 0; 
+  z-index: 40; 
+  background: url("assets/background.jpg") center / cover no-repeat;
   border-bottom: 1px solid var(--rule);
 }
 .header-inner{
@@ -59,7 +62,7 @@ body::before{
 }
 .site-tagline{
   margin: -4px 0 0; /* pull tagline closer to the title */
-  color: var(--muted);
+  color: var(--btn-ink);
   font-size: clamp(14px, 1.1vw + 10px, 18px);
 }
 
@@ -203,23 +206,36 @@ body::before{
   background:var(--btn-bg);
   border-radius: 15px; padding: 14px;
   font-weight: 400;
-  fill-opacity: 80%;
-  
+  fill-opacity: 80%; 
+}
+
+.book-container{
+  margin-top: 50px;
+}
+
+.book p.no-bubble{
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  margin: 8px 0 12px;
 }
 
 /*book quotes */
 .book p1{
-  margin: 8px 0 12px;
-  padding-left: 14px;
+  margin: 50px 0 12px;
+  padding-left: 12px;
   font-style: italic;
   color: var(--btn-ink);
 }
+
 /* buttons for book quotes*/
 .book-btn{
   display: inline-block; font-weight: 600; text-decoration: none;
   padding: 10px 14px; border-radius: 30px;
   background: var(--btn-bg); color: var(--btn-ink);
   fill-opacity: 80%;
+  width: 100%;
+  text-align: center;
 }
 
 .btn{
@@ -260,14 +276,17 @@ body::before{
   max-width: 68ch;
 }
 
-.classes-body{
+.classes-lede-smaller{
   color: var(--ink, #111);
   opacity: .9;
   line-height: 1.6;
   font-size: clamp(15px, .4vw + 14px, 18px);
   max-width: 78ch;
   margin: 10px auto 22px;
+  text-align: center;
 }
+
+
 
 .classes-body-outschool{
   color: var(--ink, #111);
@@ -291,7 +310,17 @@ body::before{
   margin: 0 auto 20px; 
   max-width: 600px; 
 }
+
 .classes-img { 
+  display:block; 
+  width:100%; 
+  height:auto; 
+  object-fit: cover; 
+  border-radius:12px; 
+}
+
+.classes-figure-small{ margin:0 auto 20px; max-width:100px; } /* your column cap */
+.classes-img-small { 
   display:block; 
   width:100%; 
   height:auto; 
@@ -311,6 +340,14 @@ body::before{
 
 /* Optional: add a bit more breathing room for this page */
 .section.classes{
+  padding-top: 8px;
+}
+
+.section.bookwriting{
+  padding-top: 8px;
+}
+
+.section.contactwriting{
   padding-top: 8px;
 }
 
@@ -364,6 +401,25 @@ body::before{
   text-decoration-color: #0f3f35;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px; /* gap from text */
+}
+
+.left-middle{
+  color: var(--ink, #111);
+  opacity: .9;
+  line-height: 1.6;
+  font-size: clamp(16px, 1vw + 14px, 22px);
+  max-width: 78ch;
+  margin: 10px auto 22px;
+}
+
+.left-middle-smaller{
+  color: var(--ink, #111);
+  opacity: .9;
+  line-height: 1.6;
+  font-size: clamp(14px, 1vw + 14px, 20px);
+  font-weight: 800;
+  max-width: 78ch;
+  margin: 10px auto 22px;
 }
 
 .left-head{
@@ -470,7 +526,6 @@ body::before{
 
 /* Contact card & form */
 .contact-card { border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--gap); background: #fff; }
-.contact-form { display: grid; gap: 12px; max-width: 680px; }
+.contact-form { display:inline ; gap: 12px; max-width: 500px;}
 .contact-form input,
-.contact-form textarea { width: 100%; border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; font: inherit; }
-.contact-form button { align-self: start; }
+.contact-form textarea { width: 100%; border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; font: inherit;}
