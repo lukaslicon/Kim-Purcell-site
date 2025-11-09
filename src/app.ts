@@ -166,7 +166,7 @@ function classesHTML() {
       </p>
 
       <figure class="classes-figure">
-        <img class="classes-img" src="assets/outschool.png" alt="Outschool class overview" />
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/a2JH0_sJYvw?si=AZEitGJPl-Vg109R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </figure>
 
       <section class="outschool-block">
