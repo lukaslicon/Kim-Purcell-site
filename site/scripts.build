@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build": "tsc -p . && mkdir -p site && (cp index.html site/ || true) && (cp styles.css site/ || true) && (cp -r assets site/ || true) && (cp -r dist site/ || true)",
+    "watch": "tsc -w -p .",
+    "serve": "python3 -m http.server 5173"
+  }
+}
