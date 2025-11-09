@@ -44,7 +44,10 @@ function booksHTML(): string {
   // BOTH BOOK SECTIONS MOVED HERE
   return `
     <section class="section book">
-      <img class="book-cover" src="assets/thisisnotaloveletter.jpg" alt="This Is Not a Love Letter cover" />
+      <div>
+        <img class="book-cover" src="assets/thisisnotaloveletter.jpg" alt="This Is Not a Love Letter cover" />
+        <a class="book-btn" href="#" aria-label="Buy This Is Not a Love Letter on Amazon">Buy on Amazon</a>
+      </div>
       <div>
         <h3>This Is Not a Love Letter</h3>
         <p>
@@ -53,15 +56,18 @@ function booksHTML(): string {
           knows better. Chris was a star athlete with a college scholarship and just weeks ago, he was beaten by boys from a
           rival school. Now, as one of the only Black kids in their depressed paper mill town, Jessie is terrified of what might have happened.
         </p>
-        <p class="quote">
+        <p1>
           “A long, beautiful, heart-breaking love letter to potential and possibilities and hope...” – NPR Book Reviews
-        </p>
-        <a class="btn" href="#" aria-label="Buy This Is Not a Love Letter on Amazon">Buy on Amazon</a>
+        </p1>
+        
       </div>
     </section>
 
     <section class="section book">
-      <img class="book-cover" src="assets/trafficked.png" alt="Trafficked cover" />
+      <div>
+        <img class="book-cover" src="assets/trafficked.png" alt="Trafficked cover" />
+        <a class="book-btn" href="#" aria-label="Buy Trafficked on Amazon">Buy on Amazon</a> 
+      </div> 
       <div>
         <h3>Trafficked</h3>
         <p>
@@ -71,11 +77,10 @@ function booksHTML(): string {
           Stranded in a foreign land with false documents, no money, and nobody who can help her, Hannah must find
           a way to save herself or risk losing the one thing she has left: her life.
         </p>
-        <p class="quote">
+        <p1>
           “Purcell's well-researched look into human trafficking has the slow pull of a dawning nightmare ...
           Gritty, realistic, and eye-opening.” – Booklist
-        </p>
-        <a class="btn" href="#" aria-label="Buy Trafficked on Amazon">Buy on Amazon</a>
+        </p1>
       </div>
     </section>
   `;
@@ -84,20 +89,8 @@ function booksHTML(): string {
 function classesHTML(): string {
   // SIMPLE CLASSES PAGE CONTENT
   return `
-    <section class="section">
-      <h2>Writing Classes</h2>
-      <p>
-        Practical, encouraging workshops focused on finishing your book with less stress and more confidence.
-        All classes include weekly goals, feedback, and community support.
-      </p>
-      <ul class="classes-list">
-        <li><strong>Foundations:</strong> Build a sustainable writing habit and outline your novel.</li>
-        <li><strong>Draft in 100 Days:</strong> Guided milestones, accountability, and weekly check-ins.</li>
-        <li><strong>Revision Lab:</strong> Restructure scenes, sharpen prose, and prepare for submission.</li>
-      </ul>
-      <p style="margin-top:12px">
-        Curious which class fits you? <a href="#contact" data-route="contact">Get in touch</a> and I’ll recommend the best path.
-      </p>
+    <section class="section-classes">
+      <u><h2>Online writing classes for both kids and adults</h2></u>
       <a class="btn" href="#contact" data-route="contact" aria-label="Contact about classes">Ask About Classes</a>
     </section>
   `;
