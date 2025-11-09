@@ -2,6 +2,16 @@
 
 type Route = 'home' | 'books' | 'classes' | 'contact';
 
+function isRoute(v: unknown): v is Route {
+  return v === 'home' || v === 'books' || v === 'classes' || v === 'contact';
+}
+
+function getRouteFromHash(): Route {
+  // supports "#books" and "#/books"
+  const raw = location.hash.replace(/^#\/?/, '');
+  return isRoute(raw) ? raw : 'home';
+}
+
 const view = document.getElementById('view') as HTMLElement | null;
 const topbar = document.getElementById('primary-nav') as HTMLElement | null;
 const navToggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
@@ -304,11 +314,10 @@ function initRouter(): void {
 
   // Hash routing
   window.addEventListener('hashchange', () => {
-    const route = (location.hash.replace('#', '') || 'home') as Route;
-    onRoute(route);
+    onRoute(getRouteFromHash());
   });
 
-  const initial = (location.hash.replace('#', '') || 'home') as Route;
+  const initial = getRouteFromHash();
   onRoute(initial);
 }
 
@@ -322,12 +331,15 @@ function initNavToggle(): void {
   });
 }
 
-document.querySelectorAll('.nav-link').forEach(a => {
+
+document.querySelectorAll<HTMLAnchorElement>('.nav-link[data-route]').forEach(a => {
   a.addEventListener('click', (e) => {
-    e.preventDefault(); 
-    const route = a.dataset.route;           // 'books', 'classes', etc.
-    history.pushState({}, '', `#/${route}`); // avoids anchor jump
-    render(route);                           // your render function
+    e.preventDefault();
+    const r = a.dataset.route;
+    if (!isRoute(r)) return;            // ignore unknown data-route values
+    history.pushState({}, '', `#/${r}`); // use "#/route" to avoid anchor jumps
+    onRoute(r);
+    view?.focus({ preventScroll: true });
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   });
 });
