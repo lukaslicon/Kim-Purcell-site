@@ -74,7 +74,8 @@ function booksHTML(): string {
         <p1>
           “A long, beautiful, heart-breaking love letter to potential and possibilities and hope...” - NPR Book Reviews
         </p1>
-        <p1>“Part love story, part mystery, this brave novel will make you feel, wonder, and think.” –Tamara Ireland Stone, New York Times best-selling author of Every Last Word
+        <p1>
+        “Part love story, part mystery, this brave novel will make you feel, wonder, and think.” –Tamara Ireland Stone, New York Times best-selling author of Every Last Word
         </p1>
         <p class="left-middle-smaller no-bubble"><b>NPR'S BEST BOOKS OF 2018</b></p>
         <p class="left-middle-smaller no-bubble"><b>A MIGHTY GIRL BOOK OF 2018</b></p>
@@ -165,12 +166,11 @@ function classesHTML() {
         fun, their writing improves in every area.
       </p>
 
-      <figure class="classes-figure">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/a2JH0_sJYvw?si=AZEitGJPl-Vg109R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <figure class="yt-one">
+        <iframe src="https://www.youtube.com/embed/a2JH0_sJYvw?si=AZEitGJPl-Vg109R" allowfullscreen></iframe>
       </figure>
 
       <section class="outschool-block">
-
         <h3 class="centered-head">2025 Schedule for Kids and Teens Classes</h3>
         <h4 class="left-head">Small Group Classes</h4>
 
@@ -195,7 +195,7 @@ function classesHTML() {
         <dl class="kv">
           <div class="kv-row">
             <dt>Cost:</dt>
-            <dd>400 for 20 Weeks of Classes. 200 if you sign up by December 1st! PLUS: if you finish 60,000 words…</dd>
+            <dd>$400 for 20 Weeks of Classes. 200 if you sign up by December 1st! PLUS: if you finish 60,000 words…</dd>
           </div>
         </dl>
         <p class="classes-body"><b>The Busy Writer Asynchronous Class:</b> In 100 days of writing, your novel will be finished! You'll receive a weekly email with a video and a skills focus for your writing. Start at any time. Every week, you write a chapter. No time to write? You write a summary of a chapter. No matter what, you move forward in your book. You have the option of an accountability email or text every day for your word count. Once a week, you can send me chapters and questions.</p>
@@ -209,9 +209,8 @@ function classesHTML() {
 
       <section class="youtube-block">
         <h3 class="centered-head underline">Writing Lessons on Youtube</h3>
-
         <div class="yt-intro">
-          <img class="yt-badge" src="assets/replacey.png" alt="YouTube logo" />
+          <img class="yt-badge" src="assets/youtube.png" alt="YouTube logo" />
           <p class="classes-body">
             On my YouTube video channel for kids: "Anyone Can Write a Book," you'll find
             a wide variety of fun, free creative writing lessons for kids.
