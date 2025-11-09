@@ -166,7 +166,7 @@ body::before{
   margin: var(--gap-lg) 0;
 }
 .social h3{
-  margin: 0; font-size: 16px; font-weight: 600; color: var(--link);
+  margin: 0; font-size: 16px; font-weight: 600; color: var(--link); 
 }
 .social-icons{
   display:flex; gap: 14px; align-items:center; flex-wrap: wrap;
@@ -239,6 +239,10 @@ body::before{
 /* ===== Classes page ===== */
 
 .page-title{
+  text-decoration-line: underline;
+  text-decoration-color: #0f3f35;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px; /* gap from text */
   text-align:center;
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 700;
@@ -265,6 +269,15 @@ body::before{
   margin: 10px auto 22px;
 }
 
+.classes-body-outschool{
+  color: var(--ink, #111);
+  opacity: .9;
+  line-height: 1.6;
+  font-size: clamp(15px, .4vw + 14px, 18px);
+  max-width: 78ch;
+}
+
+
 .section-subtitle{
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 700;
@@ -276,7 +289,7 @@ body::before{
 
 .classes-figure { 
   margin: 0 auto 20px; 
-  max-width: 800px; 
+  max-width: 600px; 
 }
 .classes-img { 
   display:block; 
@@ -287,10 +300,171 @@ body::before{
 }
 
 
+.classes-figure-write{ margin:0 auto 20px; max-width:1000px; } /* your column cap */
+.classes-img-write{
+  display:block;
+  width:100%;
+  height:auto;          /* or aspect-ratio:16/9; */
+  object-fit:cover;
+  border-radius:12px;
+}
+
 /* Optional: add a bit more breathing room for this page */
 .section.classes{
   padding-top: 8px;
 }
+
+/*===== Outschool block styles =====*/
+
+.section { max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+.outschool-block { margin: 24px 0 8px; }
+
+.outschool-cta{
+  display: grid;
+  grid-template-columns: auto 1fr; /* image left, button right */
+  align-items: center;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 22px; /* center the row */
+}
+
+.outschool-logo{
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+/* Big rounded CTA button */
+.cta-btn{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(16px, 1vw + 14px, 20px);
+  background: var(--btn-bg, #cae9df);
+  color: var(--btn-ink, #0f3f35);
+  box-shadow: 0 2px 0 rgba(0,0,0,.06) inset;
+  transition: transform .05s ease, filter .2s ease;
+}
+.cta-btn:hover{ filter: brightness(0.98); }
+.cta-btn:active{ transform: translateY(1px); }
+
+/* Headings under the row */
+.centered-head{
+  text-align: center;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(18px, 1.2vw + 16px, 26px);
+  margin: 8px auto 10px;
+  text-decoration-line: underline;
+  text-decoration-color: #0f3f35;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px; /* gap from text */
+}
+
+.left-head{
+  text-align: left;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(16px, 1vw + 14px, 22px);
+  margin: 6px auto 4px;
+  max-width: 78ch;
+}
+
+/* Responsive: stack image above button on small screens */
+@media (max-width: 700px){
+  .outschool-cta{
+    grid-template-columns: 1fr;
+  }
+  .outschool-logo{
+    margin: 0 auto 6px; /* center logo when stacked */
+  }
+  .cta-btn{
+    width: 100%; /* full-width button on mobile */
+  }
+}
+
+/*===== Youtube block styles =====*/
+
+.youtube-block{
+  margin: 26px 0 10px;
+}
+
+/* logo left + paragraph right (stays centered in page column) */
+.yt-intro{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 18px;
+  max-width: 900px;
+  margin: 8px auto 20px;  /* centers the row */
+}
+
+.yt-badge{
+  width: 110px;          /* adjust to taste */
+  height: auto;
+  display: block;
+}
+
+/* two responsive embeds */
+.yt-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 860px){
+  .yt-grid{ grid-template-columns: 1fr 1fr; }
+}
+
+/* 16:9 fluid iframe wrapper */
+.yt-video{
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;            /* 16:9 */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--rule, #e5e7eb);
+  box-shadow: 0 1px 0 rgba(0,0,0,.04);
+}
+
+.yt-video iframe{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+
+/* stack logo + text on narrow screens */
+@media (max-width: 700px){
+  .yt-intro{ grid-template-columns: 1fr; }
+  .yt-badge{ margin: 0 auto; }
+}
+
+.kv { margin: 0; }
+.kv-row{
+  display: grid;
+  grid-template-columns: max-content 1fr; /* label | body */
+  column-gap: 14px;
+  row-gap: 6px;
+  align-items: start;
+  color: var(--ink, #111);
+  opacity: .9;
+  line-height: 1.6;
+  font-size: clamp(15px, .4vw + 14px, 18px);
+  max-width: 78ch;
+  margin: 10px auto 22px;
+}
+.kv dt{ font-weight: 700; white-space: nowrap; margin: 0; }
+.kv dd{ margin: 0; }
+@media (max-width: 600px){
+  .kv-row{ grid-template-columns: 1fr; } /* stack on small screens */
+}
+
 
 
 

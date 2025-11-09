@@ -26,12 +26,12 @@ function homeHTML(): string {
       <div class="hero-copy">
         <p>
           Kim Purcell is a novelist and writing teacher who helps kids, teens, and adults
-          around the world finish their books and find joy in storytelling. She’s the author of
+          around the world finish their books and find joy in storytelling. She's the author of
           <em>Trafficked</em> (Penguin) and <em>This Is Not a Love Letter</em> (Disney/Hyperion).
         </p>
         <p>
-          Her upcoming guide, <em>The Busy Writer’s Guide to Finishing a Novel in 100 Days</em>
-          (Penguin’s Ten Speed Press), draws on her twenty years of teaching thousands of
+          Her upcoming guide, <em>The Busy Writer's Guide to Finishing a Novel in 100 Days</em>
+          (Penguin's Ten Speed Press), draws on her twenty years of teaching thousands of
           writers to reach their creative goals with less stress and more confidence.
         </p>
         <a class="cta" href="#classes" data-route="classes">Join a Writing Class Today!</a>
@@ -57,7 +57,7 @@ function booksHTML(): string {
           rival school. Now, as one of the only Black kids in their depressed paper mill town, Jessie is terrified of what might have happened.
         </p>
         <p1>
-          “A long, beautiful, heart-breaking love letter to potential and possibilities and hope...” – NPR Book Reviews
+          “A long, beautiful, heart-breaking love letter to potential and possibilities and hope...” - NPR Book Reviews
         </p1>
         
       </div>
@@ -79,10 +79,26 @@ function booksHTML(): string {
         </p>
         <p1>
           “Purcell's well-researched look into human trafficking has the slow pull of a dawning nightmare ...
-          Gritty, realistic, and eye-opening.” – Booklist
+          Gritty, realistic, and eye-opening.” - Booklist
         </p1>
       </div>
     </section>
+
+    
+    <section class="section classes">
+      <figure class="classes-figure">
+        <img class="classes-img" src="assets/tenspeeds.png" alt="publisher logo" />
+      </figure>
+
+      <p class="classes-lede">
+        Penguin is publishing my writing craft book!
+      </p>
+      <p class="classes-body">
+        Penguin's Ten Speed Press is publishing my writing craft book, The Busy Writer's Guide to Finishing a Novel in 100 Days. This press has published two of my favorite writing craft books, Story Genius by Lisa Cron and Save the Cat by Blake Snyder. More great news: Donald Maass, one of my favorite craft book writers, has offered to write the foreword. If you've been in my classes, you know I love all of his craft books, especially Writing the Breakout Novel. In my book on writing, I take a progressive approach to writing, since this is how people learn anything, and this is how I help busy people finish books.</a>.
+      </p>
+      <h4 class="left-head">What is the Busy Writer Method?</h4>
+    </section>  
+
   `;
 }
 
@@ -91,12 +107,13 @@ function classesHTML() {
   return `
     <section class="section classes">
       <h2 class="page-title">Online writing classes for both kids and adults</h2>
+
       <figure class="classes-figure">
         <img class="classes-img" src="assets/writeanovel.jpg" alt="Kids and teens writing class" />
       </figure>
 
       <p class="classes-lede">
-        Do your kid have a passion for storytelling and want to write a book?
+        Does your kid have a passion for storytelling and want to write a book?
         Let me help help them accomplish your goals. Sign them up for one of my
         fun and uplifting classes for kids and teens!
       </p>
@@ -126,9 +143,74 @@ function classesHTML() {
       <figure class="classes-figure">
         <img class="classes-img" src="assets/outschool.png" alt="Outschool class overview" />
       </figure>
+
+      <section class="outschool-block">
+
+        <h3 class="centered-head">2025 Schedule for Kids and Teens Classes</h3>
+        <h4 class="left-head">Small Group Classes</h4>
+
+        <p class="classes-body-outschool">When: Varying times five days a week</p>
+        <p class="classes-body-outschool">Small Classes for kids 8-18: <a href="https://outschool.com" target="_blank" rel="noopener">Outschool.com</a></p>
+
+        <div class="outschool-cta">
+          <img class="outschool-logo" src="assets/outschoollogo.png" alt="Outschool logo" />
+          <a class="cta-btn" href="https://outschool.com/teachers/Kim-Purcell" target="_blank" rel="noopener">
+            Click to Explore my Outschool Writing Classes
+          </a>
+        </div>
+        <h3 class="centered-head">2025: Schedule for Adult Writing Classes</h3>
+        <figure class="classes-figure-write classes-figure-write">
+          <img class="classes-img-write" src="assets/writewithkim.png" alt="Adult classes hero">
+        </figure>
+        <h4 class="left-head">The Busy Writers WorkShop</h4>
+        <p class="classes-body"><b>Live Class Time:</b> Wednesdays starting in January, 6-7 PM PST (5:30 PM PST - free writing time)</p>
+        <p class="classes-body"><b>Where:</b> <a href="https://zoom.us" target="_blank" rel="noopener">Zoom</a></p>
+        <p class="classes-body"><b>Live Class Description:</b> 30 Minutes Discussion, Brainstorming, and Craft Talk, 25 Minutes Writing. (The class opens at 5:30 for flex writing time before the class starts.)</p>
+        <p class="classes-body"><b>What Other Help Is Included:</b> A weekly guide with daily craft focuses, a bonus audio lecture, 5 days a week writing posts and accountability.</p>
+        <dl class="kv">
+          <div class="kv-row">
+            <dt>Cost:</dt>
+            <dd>400 for 20 Weeks of Classes. 200 if you sign up by December 1st! PLUS: if you finish 60,000 words…</dd>
+          </div>
+        </dl>
+        <p class="classes-body"><b>The Busy Writer Asynchronous Class:</b> In 100 days of writing, your novel will be finished! You'll receive a weekly email with a video and a skills focus for your writing. Start at any time. Every week, you write a chapter. No time to write? You write a summary of a chapter. No matter what, you move forward in your book. You have the option of an accountability email or text every day for your word count. Once a week, you can send me chapters and questions.</p>
+      </section>
+    
+      <p class="classes-lede">
+        For the FREE BUSY WRITER START-UP PACKAGE email kim@kimpurcell.com
+      </p>
+      <p class="classes-body">Ask for the free package to get you started! It includes the step by step digital PDF with activities to help you brainstorm your story, plot, characters, and world, and ten videos on the core skills you'll need to start writing your book. This is a gift from me to you to get you started. </p>
+
+
+      <section class="youtube-block">
+        <h3 class="centered-head underline">Writing Lessons on Youtube</h3>
+
+        <div class="yt-intro">
+          <img class="yt-badge" src="assets/replacey.png" alt="YouTube logo" />
+          <p class="classes-body">
+            On my YouTube video channel for kids: "Anyone Can Write a Book," you'll find
+            a wide variety of fun, free creative writing lessons for kids.
+          </p>
+        </div>
+
+        <div class="yt-grid">
+          <div class="yt-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/BRYjAqjrTUQ?si=sxiHjRIqoH7aj3Bt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="yt-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1Q54AoHti44?si=-AkTy1dXHS4SWShX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+
+
+  
+
     </section>
+    
   `;
 }
+
 
 
 function contactHTML(): string {
