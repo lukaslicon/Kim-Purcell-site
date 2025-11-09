@@ -46,7 +46,7 @@ function booksHTML(): string {
     <section class="section book">
       <div>
         <img class="book-cover" src="assets/thisisnotaloveletter.jpg" alt="This Is Not a Love Letter cover" />
-        <a class="book-btn" href="#" aria-label="Buy This Is Not a Love Letter on Amazon">Buy on Amazon</a>
+        <a class="book-btn" href="https://www.amazon.com/This-Not-Love-Letter-Purcell/dp/1484798341/ref=sr_1_1?crid=1134YHTLI75PB&dib=eyJ2IjoiMSJ9.hnhFXpEGTowlN3n531UjO07xTTvj2mvuk3sfuAE_Ocff1VgdBpFltdoKpin9gAv_tB_zgpZdjxefwy0bVfSm134wzzpXecFlmtz_pVB2CuF5QjbRF1geMaBQDggq5GjCJnOOa_Rm3rm1bmzQOzPd78S-sgtJoKgRkNXQ7TLOCMLkYWTHbUwaq6FdNUGxA1inEv6iUAhLqlPHS0pNQLDY1kSHI1nl62fFk1TGaY0IbTw.t4BzvbdHphFyeW41rbs9mFK0iL9doswKUH4zNR-HCTY&dib_tag=se&keywords=this+is+not+a+love+letter&qid=1762583609&sprefix=this+is+not+a+love+lette%2Caps%2C179&sr=8-1" aria-label="Buy This Is Not a Love Letter on Amazon">Buy on Amazon</a>
       </div>
       <div>
         <h3>This Is Not a Love Letter</h3>
@@ -66,7 +66,7 @@ function booksHTML(): string {
     <section class="section book">
       <div>
         <img class="book-cover" src="assets/trafficked.png" alt="Trafficked cover" />
-        <a class="book-btn" href="#" aria-label="Buy Trafficked on Amazon">Buy on Amazon</a> 
+        <a class="book-btn" href="https://www.amazon.com/Trafficked-Kim-Purcell/dp/0670012807/ref=sr_1_1?crid=1RKPVYQHW60OR&dib=eyJ2IjoiMSJ9.68NNkQE_Hj-0w3N9eFQLXZ77IjsnIjKYgIvbUKuANYg.GIYLhHW2B1n1OqNgaf7r-PvUgZMPKRGWB8PcGxHGePM&dib_tag=se&keywords=trafficked+by+kim+purcell&qid=1762583662&sprefix=trafficked+by+k%2Caps%2C194&sr=8-1" aria-label="Buy Trafficked on Amazon">Buy on Amazon</a> 
       </div> 
       <div>
         <h3>Trafficked</h3>
@@ -86,15 +86,50 @@ function booksHTML(): string {
   `;
 }
 
-function classesHTML(): string {
-  // SIMPLE CLASSES PAGE CONTENT
+
+function classesHTML() {
   return `
-    <section class="section-classes">
-      <u><h2>Online writing classes for both kids and adults</h2></u>
-      <a class="btn" href="#contact" data-route="contact" aria-label="Contact about classes">Ask About Classes</a>
+    <section class="section classes">
+      <h2 class="page-title">Online writing classes for both kids and adults</h2>
+      <figure class="classes-figure">
+        <img class="classes-img" src="assets/writeanovel.jpg" alt="Kids and teens writing class" />
+      </figure>
+
+      <p class="classes-lede">
+        Do your kid have a passion for storytelling and want to write a book?
+        Let me help help them accomplish your goals. Sign them up for one of my
+        fun and uplifting classes for kids and teens!
+      </p>
+
+      <p class="classes-body">
+        I teach kids and teens how to write and publish their own chapter books and novels in
+        engaging, supportive online classes. My students build confidence, creativity, and strong
+        writing skills through fun, multi-sensory prompts and personalized feedback. For younger
+        writers, you can join group classes and camps through <strong>Outschool</strong>. For private
+        lessons and adults classes starting in January, reach out directly at
+        <a href="mailto:kim@kimpurcell.com">kim@kimpurcell.com</a>.
+      </p>
+
+      <figure class="classes-figure">
+        <img class="classes-img" src="assets/publish.jpg" alt="Kids and teens writing class" />
+      </figure>
+
+      <h3 class="section-subtitle">Online Writing Classes Through Outschool</h3>
+
+      <p class="classes-body">
+        I offer continuous and drop-in writing classes for kids and teens through Outschool.
+        Over 300 5-star ratings and counting! I specialize in teaching writing through storytelling
+        in fun, inclusive classes. When you help students use their imagination and you make writing
+        fun, their writing improves in every area.
+      </p>
+
+      <figure class="classes-figure">
+        <img class="classes-img" src="assets/outschool.png" alt="Outschool class overview" />
+      </figure>
     </section>
   `;
 }
+
 
 function contactHTML(): string {
   // SOCIAL ROW + CONTACT CARD
