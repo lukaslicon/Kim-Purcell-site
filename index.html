@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Serif for headings; clean sans for body -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfai...00;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -35,25 +35,41 @@
               <span class="nav-indicator" aria-hidden="true"></span>
             </div>
           </nav>
+
+          <!-- Mobile nav toggle (hidden on desktop) -->
+          <button class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+            <span class="nav-toggle-box" aria-hidden="true">
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+            </span>
+            <span class="nav-toggle-text">Menu</span>
+          </button>
+
+          <!-- Mobile dropdown (populated via JS from #primary-nav-list) -->
+          <div class="mobile-menu" id="mobileMenu" hidden>
+            <ul class="mobile-menu-list" id="mobileMenuList"><!-- cloned items go here --></ul>
+          </div>
+
         </div>
       </div>
     </header>
 
     <!-- ===== Swappable bottom view (Home rendered initially) ===== -->
-    <main id="view" class="container view" role="main" tabindex="-1"></main>
-    <footer class="site-footer" role="contentinfo">
-      <div class="container">
-        <section class="social" aria-labelledby="social-title">
-            <h3 id="social-title">Find Kim On...</h3>
-           <div class="social-icons">
-                <a href="https://www.youtube.com/@authorkimpurcell" aria-label="Youtube"><img src="assets/replacey.png" alt="" /></a>
-                <a href="https://www.instagram.com/typingthumbs/?hl=en" aria-label="Instagram"><img src="assets/replacei.png" alt="" /></a>
-                <a href="https://www.tiktok.com/@writingforbusypeople" aria-label="Tiktok"><img src="assets/TikTok.png" alt="" /></a>
-            </div>
-        </section>
-        <small>&copy; <span id="year"></span> Kim Purcell</small>
+    <main id="view" class="container view" role="main" tabindex="-1" aria-live="polite">
+      <!-- Content is injected by app.ts / router -->
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>&copy; <span id="year"></span> Kim Purcell. All rights reserved.</p>
       </div>
     </footer>
-    <script type="module" src="./dist/app.js"></script>
+
+    <script src="./dist/app.js" type="module"></script>
+    <script>
+      // keep year fresh without touching TS
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

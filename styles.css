@@ -168,6 +168,126 @@ body::before{
 }
 
 
+/*MOBILE */
+
+/* ===== Mobile nav (dropdown) ===== */
+
+.nav-toggle{
+  display: none; /* shown on mobile via media query */
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  line-height: 1;
+  font: inherit;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-toggle:focus-visible{ outline: 2px solid #000; outline-offset: 2px; }
+
+.nav-toggle-box{
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-toggle-line{
+  width: 22px; height: 2px; background: #000; border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+/* morph into X when open */
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(2){ opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+.nav-toggle-text{
+  font-weight: 600; color: #000; letter-spacing: .2px;
+}
+
+/* dropdown panel */
+.mobile-menu{
+  position: absolute;
+  left: 0; right: 0;
+  top: 100%;
+  z-index: 50;
+  background: var(--topbar-bg, #B1DECC);
+  border-bottom: 1px solid var(--rule, #e5e7eb);
+  transform-origin: top center;
+  transform: scaleY(0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .28s cubic-bezier(.22,.9,.24,1), opacity .22s ease;
+  will-change: transform, opacity;
+}
+
+/* inner list */
+.mobile-menu-list{
+  list-style: none; margin: 0; padding: 10px 16px 16px;
+  display: grid; gap: 6px;
+}
+
+.mobile-menu-list a{
+  display: block;
+  padding: 12px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  background: rgba(255,255,255,.35);
+  border: 1px solid var(--rule, #e5e7eb);
+  transform: translateY(-4px);
+  opacity: 0;
+  transition: transform .35s ease, opacity .35s ease, background .2s ease, filter .2s ease;
+}
+.mobile-menu-list a:hover,
+.mobile-menu-list a:focus-visible{
+  background: rgba(255,255,255,.55);
+  filter: brightness(0.98);
+}
+
+/* open state (set via [data-open="true"]) */
+.mobile-menu[data-open="true"]{
+  transform: scaleY(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* stagger reveal for links when panel opens */
+.mobile-menu[data-open="true"] .mobile-menu-list a{
+  transform: translateY(0);
+  opacity: 1;
+}
+.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(1) a{ transition-delay: 40ms; }
+.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(2) a{ transition-delay: 80ms; }
+.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(3) a{ transition-delay: 120ms; }
+.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(4) a{ transition-delay: 160ms; }
+.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(5) a{ transition-delay: 200ms; }
+
+/* motion safety */
+@media (prefers-reduced-motion: reduce){
+  .mobile-menu, .mobile-menu-list a, .nav-toggle-line{ transition: none !important; }
+}
+
+/* ===== Breakpoint behavior ===== */
+@media (max-width: 860px){
+  /* your current desktop nav uses .site-nav and a centered UL; hide it on mobile */
+  .site-nav { display: none; } /* desktop nav off */
+  .topbar { position: relative; } /* anchor for absolute dropdown */
+  .nav-toggle { display: inline-flex; }
+  .topbar .container.topbar-inner{
+    display: flex; justify-content: space-between; align-items: center;
+  }
+}
+
+/* Keep existing desktop styling intact on larger screens.
+   Your desktop nav styles (e.g., .site-nav ul, .nav-link, etc.) remain unchanged. */ 
+
+
+
 /* ========= Swappable view area (Home) ========= */
 .view{ padding: clamp(20px, 4vw, 0px) 0 0px; }
 

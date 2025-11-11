@@ -421,3 +421,86 @@ document.addEventListener('DOMContentLoaded', init);
     }, 100);
   });
 })();
+
+// MOBILE MENU
+const desktopList = document.getElementById('primary-nav-list');
+const mobileMenu = document.getElementById('mobileMenu') as HTMLDivElement | null;
+const mobileList = document.getElementById('mobileMenuList');
+const toggleBtn = document.querySelector<HTMLButtonElement>('.nav-toggle');
+
+function openMenu(){
+  if(!mobileMenu || !toggleBtn) return;
+  toggleBtn.setAttribute('aria-expanded', 'true');
+  mobileMenu.hidden = false;
+  mobileMenu.setAttribute('data-open', 'true');
+  // focus the first link after open
+  const firstLink = mobileMenu.querySelector<HTMLAnchorElement>('a');
+  if (firstLink) firstLink.focus({ preventScroll: true });
+}
+
+function closeMenu(){
+  if(!mobileMenu || !toggleBtn) return;
+  toggleBtn.setAttribute('aria-expanded', 'false');
+  mobileMenu.removeAttribute('data-open');
+  // wait for CSS fade to finish before hiding for screen readers
+  window.setTimeout(() => { if (toggleBtn.getAttribute('aria-expanded') === 'false') mobileMenu.hidden = true; }, 220);
+}
+
+function isOpen(){ return toggleBtn?.getAttribute('aria-expanded') === 'true'; }
+
+function toggleMenu(){
+  isOpen() ? closeMenu() : openMenu();
+}
+
+function outsideClick(e: MouseEvent){
+  if(!mobileMenu || !toggleBtn) return;
+  const t = e.target as Node;
+  if (!mobileMenu.contains(t) && !toggleBtn.contains(t)) closeMenu();
+}
+
+function onKeydown(e: KeyboardEvent){
+  if(e.key === 'Escape' && isOpen()) closeMenu();
+}
+
+function hydrateMobileMenu(){
+  if(!desktopList || !mobileList) return;
+  // Clone only the <a> items to keep routing attributes like data-route
+  mobileList.innerHTML = '';
+  desktopList.querySelectorAll('a').forEach((a) => {
+    const li = document.createElement('li');
+    const link = a.cloneNode(true) as HTMLAnchorElement;
+    link.classList.remove('is-active'); // mobile state will follow route separately
+    li.appendChild(link);
+    mobileList.appendChild(li);
+  });
+}
+
+function addMobileHandlers(){
+  if(!toggleBtn || !mobileMenu) return;
+  toggleBtn.addEventListener('click', toggleMenu);
+  document.addEventListener('click', outsideClick);
+  document.addEventListener('keydown', onKeydown);
+
+  // Close after navigation
+  mobileMenu.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    if (t.closest('a')) closeMenu();
+  });
+}
+
+// Run once on startup; call again if you dynamically change the desktop nav.
+hydrateMobileMenu();
+addMobileHandlers();
+
+// (Optional) if your SPA updates is-active classes on route changes,
+// reflect it in mobile too:
+function syncActiveLink(){
+  const activeSel = 'a.is-active';
+  const desktopActive = desktopList?.querySelector(activeSel)?.getAttribute('href');
+  mobileList?.querySelectorAll('a').forEach(a => {
+    if (a.getAttribute('href') === desktopActive) a.classList.add('is-active');
+    else a.classList.remove('is-active');
+  });
+}
+window.addEventListener('hashchange', syncActiveLink);
+syncActiveLink();
