@@ -24,8 +24,6 @@ function setYear(): void {
 
 if (view && view.focus) view.focus({ preventScroll: true });
 
-window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); // or 'smooth'
-
 
 function setActive(route: Route): void {
   document.querySelectorAll<HTMLAnchorElement>('.nav-link').forEach(a => {
@@ -38,6 +36,22 @@ function resetScrollTop() {
   (document.documentElement || document.body).scrollTop = 0;
   requestAnimationFrame(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  });
+}
+
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+function snapToTopNow() {
+  const root = document.scrollingElement || document.documentElement;
+  const prev = (root as HTMLElement).style.scrollBehavior;
+  (root as HTMLElement).style.scrollBehavior = 'auto';
+
+  window.scrollTo(0, 0);
+  requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
+    (root as HTMLElement).style.scrollBehavior = prev || '';
   });
 }
 
@@ -302,28 +316,49 @@ function render(route: Route): void {
       view.innerHTML = `<section class="section"><h2>Not found</h2></section>`;
   }
 
-  view.focus();
+  view.focus({ preventScroll: true });
 }
+
 
 function onRoute(route: Route): void {
   setActive(route);
   render(route);
+
   const topbar = document.getElementById('primary-nav') as HTMLElement | null;
-  if (topbar) topbar.setAttribute('aria-expanded', 'false'); // keep this
+  if (topbar) topbar.setAttribute('aria-expanded', 'false');
+
+  // Keep focus updates from nudging scroll
+  view?.focus({ preventScroll: true });
+
+  // 2-frame snap – more reliable on mobile
+  requestAnimationFrame(() => requestAnimationFrame(snapToTopNow));
 }
 
 function initRouter(): void {
-  // Delegate clicks on [data-route]
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement | null;
     const anchor = t?.closest?.('[data-route]') as HTMLAnchorElement | null;
     if (anchor?.dataset?.route) {
       e.preventDefault();
       const route = anchor.dataset.route as Route;
-      window.location.hash = route;
-      onRoute(route);
+      const current = location.hash.replace(/^#\/?/, '');
+      if (current !== route) {
+        // 1 path: change the hash, let `hashchange` trigger onRoute exactly once
+        location.hash = route;
+      } else {
+        // same tab clicked: update manually
+        onRoute(route);
+      }
     }
   });
+
+  window.addEventListener('hashchange', () => {
+    onRoute(getRouteFromHash());
+  });
+
+  const initial = getRouteFromHash();
+  onRoute(initial);
+}
 
   // Hash routing
   window.addEventListener('hashchange', () => {
@@ -346,21 +381,6 @@ function initNavToggle(): void {
     navToggle.setAttribute('aria-expanded', (!expanded).toString());
   });
 }
-
-
-
-document.querySelectorAll<HTMLAnchorElement>('.nav-link[data-route]').forEach(a => {
-  a.addEventListener('click', (e) => {
-    e.preventDefault();
-    const r = a.dataset.route;
-    if (!isRoute(r)) return;            
-    history.pushState({}, '', `#/${r}`); 
-    onRoute(r);
-    view?.focus({ preventScroll: true });
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    resetScrollTop();
-  });
-});
 
 function init(): void {
   setYear();
