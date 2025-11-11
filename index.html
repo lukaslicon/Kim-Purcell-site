@@ -55,21 +55,22 @@
       </div>
     </header>
 
-    <!-- ===== Swappable bottom view (Home rendered initially) ===== -->
-    <main id="view" class="container view" role="main" tabindex="-1" aria-live="polite">
-      <!-- Content is injected by app.ts / router -->
-    </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>&copy; <span id="year"></span> Kim Purcell. All rights reserved.</p>
+    <!-- ===== Swappable bottom view (Home rendered initially) ===== -->
+    <main id="view" class="container view" role="main" tabindex="-1"></main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <section class="social" aria-labelledby="social-title">
+            <h3 id="social-title">Find Kim On...</h3>
+           <div class="social-icons">
+                <a href="https://www.youtube.com/@authorkimpurcell" aria-label="Youtube"><img src="assets/replacey.png" alt="" /></a>
+                <a href="https://www.instagram.com/typingthumbs/?hl=en" aria-label="Instagram"><img src="assets/replacei.png" alt="" /></a>
+                <a href="https://www.tiktok.com/@writingforbusypeople" aria-label="Tiktok"><img src="assets/TikTok.png" alt="" /></a>
+            </div>
+        </section>
+        <small>&copy; <span id="year"></span> Kim Purcell</small>
       </div>
     </footer>
-
-    <script src="./dist/app.js" type="module"></script>
-    <script>
-      // keep year fresh without touching TS
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    <script type="module" src="./dist/app.js"></script>
   </body>
 </html>

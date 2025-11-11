@@ -169,11 +169,8 @@ body::before{
 
 
 /*MOBILE */
-
-/* ===== Mobile nav (dropdown) ===== */
-
 .nav-toggle{
-  display: none; /* shown on mobile via media query */
+  display: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -185,107 +182,92 @@ body::before{
   align-items: center;
   gap: 10px;
 }
-
 .nav-toggle:focus-visible{ outline: 2px solid #000; outline-offset: 2px; }
-
-.nav-toggle-box{
-  display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.nav-toggle-line{
-  width: 22px; height: 2px; background: #000; border-radius: 2px;
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-/* morph into X when open */
+.nav-toggle-box{ display: inline-flex; flex-direction: column; gap: 4px; }
+.nav-toggle-line{ width: 22px; height: 2px; background: #000; border-radius: 2px; transition: transform .25s ease, opacity .25s ease; }
 .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(1){ transform: translateY(6px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(2){ opacity: 0; }
 .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+.nav-toggle-text{ font-weight: 600; color: #000; letter-spacing: .2px; }
 
-.nav-toggle-text{
-  font-weight: 600; color: #000; letter-spacing: .2px;
-}
-
-/* dropdown panel */
+/* --- Dropdown panel with clip-path reveal --- */
 .mobile-menu{
   position: absolute;
-  left: 0; right: 0;
-  top: 100%;
+  left: 0; right: 0; top: 100%;
   z-index: 50;
   background: var(--topbar-bg, #B1DECC);
   border-bottom: 1px solid var(--rule, #e5e7eb);
   transform-origin: top center;
-  transform: scaleY(0.92);
-  opacity: 0;
+  overflow: hidden;           /* hide items as they drop in */
   pointer-events: none;
-  transition: transform .28s cubic-bezier(.22,.9,.24,1), opacity .22s ease;
-  will-change: transform, opacity;
+  opacity: 0;
+  /* initial “closed” clip and scale */
+  clip-path: inset(0 0 100% 0);
+  transform: scaleY(.96);
+}
+
+/* open state flips to active, and we *animate* in */
+.mobile-menu[data-open="true"]{
+  pointer-events: auto;
+  animation: menu-reveal 800ms cubic-bezier(.2,.9,.22,1) forwards;
 }
 
 /* inner list */
-.mobile-menu-list{
-  list-style: none; margin: 0; padding: 10px 16px 16px;
-  display: grid; gap: 6px;
-}
-
+.mobile-menu-list{ list-style: none; margin: 0; padding: 10px 16px 16px; display: grid; gap: 8px; }
+.mobile-menu-list li{ --i: 0; } /* will be set per-item in JS */
 .mobile-menu-list a{
   display: block;
-  padding: 12px 10px;
+  padding: 12px 12px;
   border-radius: 10px;
   text-decoration: none;
   color: #000;
   font-weight: 600;
   background: rgba(255,255,255,.35);
   border: 1px solid var(--rule, #e5e7eb);
-  transform: translateY(-4px);
+  transform: translateY(-10px);
   opacity: 0;
-  transition: transform .35s ease, opacity .35s ease, background .2s ease, filter .2s ease;
+  filter: blur(2px);
 }
+
+/* when menu opens, each item runs the drop animation with a quick stagger */
+.mobile-menu[data-open="true"] .mobile-menu-list a{
+  animation: item-drop 360ms cubic-bezier(.18,.9,.22,1) forwards;
+  animation-delay: calc(40ms * var(--i)); /* 0ms, 40ms, 80ms, … */
+}
+
+/* hover/focus states */
 .mobile-menu-list a:hover,
 .mobile-menu-list a:focus-visible{
   background: rgba(255,255,255,.55);
-  filter: brightness(0.98);
+  filter: none;
 }
 
-/* open state (set via [data-open="true"]) */
-.mobile-menu[data-open="true"]{
-  transform: scaleY(1);
-  opacity: 1;
-  pointer-events: auto;
+/* Keyframes */
+@keyframes menu-reveal{
+  0%   { opacity: 0; clip-path: inset(0 0 100% 0); transform: scaleY(.96); }
+  60%  { opacity: 1; clip-path: inset(0 0 0 0); transform: scaleY(1.012); }
+  100% { opacity: 1; clip-path: inset(0 0 0 0); transform: scaleY(1); }
 }
-
-/* stagger reveal for links when panel opens */
-.mobile-menu[data-open="true"] .mobile-menu-list a{
-  transform: translateY(0);
-  opacity: 1;
+@keyframes item-drop{
+  0%   { opacity: 0; transform: translateY(-10px); filter: blur(2px); }
+  70%  { opacity: 1; transform: translateY(2px);  filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
-.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(1) a{ transition-delay: 40ms; }
-.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(2) a{ transition-delay: 80ms; }
-.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(3) a{ transition-delay: 120ms; }
-.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(4) a{ transition-delay: 160ms; }
-.mobile-menu[data-open="true"] .mobile-menu-list li:nth-child(5) a{ transition-delay: 200ms; }
 
 /* motion safety */
 @media (prefers-reduced-motion: reduce){
-  .mobile-menu, .mobile-menu-list a, .nav-toggle-line{ transition: none !important; }
+  .mobile-menu{ animation: none !important; clip-path: none; transform: none; opacity: 1; }
+  .mobile-menu[hidden]{ opacity: 0; }
+  .mobile-menu[data-open="true"] .mobile-menu-list a{ animation: none !important; opacity: 1; transform: none; filter: none; }
 }
 
-/* ===== Breakpoint behavior ===== */
+/* Breakpoint behavior */
 @media (max-width: 860px){
-  /* your current desktop nav uses .site-nav and a centered UL; hide it on mobile */
-  .site-nav { display: none; } /* desktop nav off */
-  .topbar { position: relative; } /* anchor for absolute dropdown */
+  .site-nav { display: none; }
+  .topbar { position: relative; }
   .nav-toggle { display: inline-flex; }
-  .topbar .container.topbar-inner{
-    display: flex; justify-content: space-between; align-items: center;
-  }
+  .topbar .container.topbar-inner{ display: flex; justify-content: space-between; align-items: center; }
 }
-
-/* Keep existing desktop styling intact on larger screens.
-   Your desktop nav styles (e.g., .site-nav ul, .nav-link, etc.) remain unchanged. */ 
-
 
 
 /* ========= Swappable view area (Home) ========= */

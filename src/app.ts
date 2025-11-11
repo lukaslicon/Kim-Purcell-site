@@ -464,16 +464,17 @@ function onKeydown(e: KeyboardEvent){
 
 function hydrateMobileMenu(){
   if(!desktopList || !mobileList) return;
-  // Clone only the <a> items to keep routing attributes like data-route
   mobileList.innerHTML = '';
-  desktopList.querySelectorAll('a').forEach((a) => {
+  desktopList.querySelectorAll('a').forEach((a, idx) => {
     const li = document.createElement('li');
+    li.style.setProperty('--i', String(idx)); // <-- powers the stagger
     const link = a.cloneNode(true) as HTMLAnchorElement;
-    link.classList.remove('is-active'); // mobile state will follow route separately
+    link.classList.remove('is-active');
     li.appendChild(link);
     mobileList.appendChild(li);
   });
 }
+
 
 function addMobileHandlers(){
   if(!toggleBtn || !mobileMenu) return;
