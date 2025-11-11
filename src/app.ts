@@ -25,6 +25,8 @@ function setYear(): void {
 if (view && view.focus) view.focus({ preventScroll: true });
 
 
+
+
 function setActive(route: Route): void {
   document.querySelectorAll<HTMLAnchorElement>('.nav-link').forEach(a => {
     a.classList.toggle('is-active', (a.dataset.route as Route) === route);
@@ -352,15 +354,6 @@ function initRouter(): void {
     }
   });
 
-  window.addEventListener('hashchange', () => {
-    onRoute(getRouteFromHash());
-  });
-
-  const initial = getRouteFromHash();
-  onRoute(initial);
-}
-
-  // Hash routing
   window.addEventListener('hashchange', () => {
     onRoute(getRouteFromHash());
   });
