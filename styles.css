@@ -16,6 +16,12 @@ html, body { height: 100%; margin: 0; padding: 0; }
   --gap: 24px;
   --gap-sm: 12px;
   --gap-lg: 36px;
+  --nav-accent-1: #2c3e50;      
+  --nav-accent-2: #7791ab;     
+  --nav-accent-3: #19364f;
+  --nav-underline-h: 3px;          /* thin, not a big bar */
+  --nav-glow: 0 0 15px rgba(52, 149, 191, 0.2); 
+  --nav-speed: 220ms;
 }
 
 body{
@@ -69,17 +75,7 @@ body::before{
 /* Top bar under name+tagline, matching the PDF’s light band */
 .topbar{
   background: var(--topbar-bg);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.topbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;   /* <-- THIS centers the words */
-  gap: var(--gap);
-  padding: 10px 0;
-  position: relative;   
-   /* needed for the toggle positioning below */
+  padding: 15px;
 }
 .site-nav ul {
   display: flex;
@@ -102,29 +98,75 @@ body::before{
   content: ""; position: absolute; left: 0; right: 0; bottom: -8px;
   height: 2px; background: transparent;
 }
-.site-nav a:hover::after{ background: #cbd5e1; }         /* subtle hover underline */
-.site-nav a.is-active::after{ background: var(--ink); }   /* solid underline for active */
 
-/* Mobile toggle */
-.nav-toggle {
-  position: absolute;        /* <-- pin it so it doesn’t affect centering */
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: 0;
-  padding: 8px;
-  display: none;             /* shown only on small screens */
+/* === Animated neon underline (visible on hover + focus) ===
+   ::after is the thin gradient laser that sweeps.
+   ::before is a soft glow that turns on only while hovering. */
+/* ===== Fancy Neon Nav — drop-in, no HTML changes ===== */
+/* Gradient sweep keyframes */
+@keyframes neonSweep{
+  0%   { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
 }
-.nav-toggle span{ display:block; width: 24px; height:2px; background: var(--ink); margin:5px 0; }
 
-
-@media (max-width: 760px){
-  .topbar-inner{ grid-template-columns: auto; justify-items: center; }
-  .nav-toggle{ display:block; }
-  .site-nav ul{ display:none; }
-  .topbar[aria-expanded="true"] .site-nav ul{ display:flex; }
+.site-nav .nav-link::after,
+.site-nav .nav-link::before{
+  content:"";
+  position:absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -6px;
+  height: var(--nav-underline-h);
+  border-radius: 999px;
+  pointer-events: none;
 }
+
+.site-nav .nav-link::after{
+  background:
+    linear-gradient(90deg,
+      var(--nav-accent-1),
+      var(--nav-accent-2),
+      var(--nav-accent-3),
+      var(--nav-accent-2),
+      var(--nav-accent-1));
+  background-size: 220% 100%;
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform var(--nav-speed) cubic-bezier(.22,.9,.24,1);
+  opacity: .95;
+  filter: saturate(1.2);
+}
+
+.site-nav .nav-link::before{
+  background: radial-gradient(50% 160% at 50% 50%,
+            rgba(122,92,255,.45) 0%, rgba(0,0,0,0) 70%);
+  height: calc(var(--nav-underline-h) * 3);          /* subtle glow, still thin */
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+/* Hover/focus: grow + sweep */
+.site-nav .nav-link:hover::after,
+.site-nav .nav-link:focus-visible::after{
+  transform: scaleX(1);
+  animation: neonSweep 600ms ease-out both;
+}
+.site-nav .nav-link:hover::before,
+.site-nav .nav-link:focus-visible::before{
+  opacity: 1;
+  box-shadow: var(--nav-glow);
+}
+
+/* Active route: steady accent (no sweep needed, just visible) */
+.site-nav .nav-link.is-active::after{
+  transform: scaleX(1);
+  animation: none;
+}
+.site-nav .nav-link.is-active::before{
+  opacity: .85;
+}
+
 
 /* ========= Swappable view area (Home) ========= */
 .view{ padding: clamp(20px, 4vw, 0px) 0 0px; }
@@ -568,3 +610,4 @@ body::before{
 .contact-form { display:inline ; gap: 12px; max-width: 500px;}
 .contact-form input,
 .contact-form textarea { width: 100%; border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; font: inherit;}
+

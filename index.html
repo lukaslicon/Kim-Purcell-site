@@ -24,16 +24,16 @@
       <!-- Top bar matches PDF feel: light bar, centered nav, clear separators -->
       <div class="topbar" id="primary-nav">
         <div class="container topbar-inner">
-          <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav-list" aria-label="Toggle navigation">
-            <span></span><span></span><span></span>
-          </button>
-          <nav class="site-nav" role="navigation" aria-label="Primary">
-            <ul id="primary-nav-list">
-              <li><a href="#home" data-route="home" class="nav-link is-active">Home</a></li>
-              <li><a href="#books" data-route="books" class="nav-link">Books</a></li>
-              <li><a href="#classes" data-route="classes" class="nav-link">Classes</a></li>
-              <li><a href="#contact" data-route="contact" class="nav-link">Contact</a></li>
-            </ul>
+          <nav class="site-nav" aria-label="Primary">
+            <div class="nav-rail">
+              <ul id="primary-nav-list" class="nav-list">
+                <li><a href="#home" data-route="home" class="nav-link is-active">Home</a></li>
+                <li><a href="#books" data-route="books" class="nav-link">Books</a></li>
+                <li><a href="#classes" data-route="classes" class="nav-link">Classes</a></li>
+                <li><a href="#contact" data-route="contact" class="nav-link">Contact</a></li>
+              </ul>
+              <span class="nav-indicator" aria-hidden="true"></span>
+            </div>
           </nav>
         </div>
       </div>

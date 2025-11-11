@@ -113,6 +113,9 @@ function booksHTML(): string {
         </p1>
         <p class="left-middle-smaller no-bubble"><b>Bankstreet College of Education Best Children's Books of 2013 - 14 and Older</b></p>
         <p class="left-middle-smaller no-bubble"><b>Eliot Rosewater Indiana High Shool Book Award List 2013</b></p>
+        <p class="left-middle-smaller no-bubble"><b>SOUTH CAROLINA BOOK AWARD NOMINEE 2013-2014</b></p>
+        <p class="left-middle-smaller no-bubble"><b>MISSOURI ASSOCIATION OF SCHOOL LIBRARIES GATEWAY AWARD NOMINEE 2013-2014</b></p>
+        <p class="left-middle-smaller no-bubble"><b>SOUTH DAKOTA YOUNG ADULT READING PROGRAM BOOK AWARD NOMINEE 2013-2014</b></p>
       </div>
     </section>
 
@@ -305,7 +308,8 @@ function render(route: Route): void {
 function onRoute(route: Route): void {
   setActive(route);
   render(route);
-  if (topbar) topbar.setAttribute('aria-expanded', 'false');
+  const topbar = document.getElementById('primary-nav') as HTMLElement | null;
+  if (topbar) topbar.setAttribute('aria-expanded', 'false'); // keep this
 }
 
 function initRouter(): void {
@@ -330,7 +334,10 @@ function initRouter(): void {
   onRoute(initial);
 }
 
+// already in your app.ts
 function initNavToggle(): void {
+  const topbar = document.getElementById('primary-nav') as HTMLElement | null;
+  const navToggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
   if (!topbar || !navToggle) return;
   topbar.setAttribute('aria-expanded', 'false');
   navToggle.addEventListener('click', () => {
@@ -339,6 +346,7 @@ function initNavToggle(): void {
     navToggle.setAttribute('aria-expanded', (!expanded).toString());
   });
 }
+
 
 
 document.querySelectorAll<HTMLAnchorElement>('.nav-link[data-route]').forEach(a => {
@@ -362,3 +370,54 @@ function init(): void {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+
+// NAV: liquid pill highlight
+(() => {
+  const rail = document.querySelector<HTMLElement>('.site-nav .nav-rail');
+  const list = document.querySelector<HTMLUListElement>('#primary-nav-list');
+  const pill = document.querySelector<HTMLElement>('.nav-highlight');
+  if (!rail || !list || !pill) return;
+
+  const links = Array.from(list.querySelectorAll<HTMLAnchorElement>('a.nav-link'));
+
+  // position pill under a link
+  const positionPill = (el: HTMLElement) => {
+    const rRail = rail.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    const left = Math.round(r.left - rRail.left);
+    const width = Math.round(r.width);
+    pill.style.setProperty('--left', `${left - 6}px`);   // small overscan for a nicer cushion
+    pill.style.setProperty('--width', `${width + 12}px`);
+  };
+
+  // choose a default: active link if present, else first
+  const active = links.find(a => a.classList.contains('is-active')) || links[0];
+  if (active) requestAnimationFrame(() => positionPill(active));
+
+  // show movement on hover/focus, and add a “moving” class to trigger shimmer
+  const move = (el: HTMLElement) => {
+    rail.classList.add('moving');
+    positionPill(el);
+    // remove the "moving" flag after animation finishes
+    window.clearTimeout((move as any)._t);
+    (move as any)._t = window.setTimeout(() => rail.classList.remove('moving'), 350);
+  };
+
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => move(link));
+    link.addEventListener('focus', () => move(link));
+  });
+
+  // keep pill sensible on resize
+  let t: number | undefined;
+  window.addEventListener('resize', () => {
+    window.clearTimeout(t);
+    t = window.setTimeout(() => {
+      const el = (document.activeElement instanceof HTMLElement && document.activeElement.classList.contains('nav-link'))
+        ? document.activeElement
+        : (links.find(a => a.classList.contains('is-active')) || links[0]);
+      if (el) positionPill(el);
+    }, 100);
+  });
+})();
