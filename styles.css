@@ -730,7 +730,6 @@ body::before{
   font-family: "Myriad Pro", "Semibold", sans-serif;
   font-weight: 600; 
   font-size: clamp(16px, 1vw + 14px, 22px);
-  margin: 6px auto 4px;
   max-width: 78ch;
 }
 

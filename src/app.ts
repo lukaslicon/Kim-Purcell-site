@@ -168,17 +168,12 @@ function classesHTML() {
 
       <p class="classes-lede">
         Do you have a passion for storytelling and want to write a book?
-        Let me help them accomplish your goals. Sign them up for one of my
-        fun and uplifting classes for kids and teens!
+        Let me help you accomplish your goals. Sign them up for one of my
+        fun and uplifting classes for kids, teens and adults!
       </p>
 
       <p class="classes-body">
-        I teach kids and teens how to write and publish their own chapter books and novels in
-        engaging, supportive online classes. My students build confidence, creativity, and strong
-        writing skills through fun, multi-sensory prompts and personalized feedback. For younger
-        writers, you can join group classes and camps through <strong>Outschool</strong>. For private
-        lessons and adults classes starting in January, reach out directly at
-        <a href="mailto:kim@kimpurcell.com">kim@kimpurcell.com</a>.
+        I teach kids and teens how to write and publish their own chapter books and novels in engaging, supportive online classes. My students build confidence, creativity, and strong writing skills through fun, multi-sensory prompts and personalized feedback. For students aged 8-18, you can join group classes and camps through Outschool. For private lessons, reach out directly at <a href="mailto:kim@kimpurcell.com">kim@kimpurcell.com</a> or book through Outschool. Visit my contact me section to learn more about pricing, editing, publishing and 1:1 classes. Scroll to the end of this page to learn about my adult classes. 
       </p>
 
       <h3 class="section-subtitle">Online Writing Classes Through Outschool</h3>
@@ -194,6 +189,13 @@ function classesHTML() {
         <iframe src="https://www.youtube.com/embed/a2JH0_sJYvw?si=AZEitGJPl-Vg109R" allowfullscreen></iframe>
       </figure>
 
+      <div class="outschool-cta">
+        <img class="outschool-logo" src="assets/outschoollogo.png" alt="Outschool logo" />
+        <a class="cta-btn" href="https://outschool.com/teachers/Kim-Purcell" target="_blank" rel="noopener">
+          Click to Explore my Outschool Writing Classes
+        </a>
+      </div>
+
       <section class="outschool-block">
         <h3 class="centered-head">2025 Schedule for Kids and Teens Classes</h3>
         <h4 class="left-head">Small Group Classes</h4>
@@ -201,12 +203,9 @@ function classesHTML() {
         <p class="classes-body-outschool">When: Varying times five days a week</p>
         <p class="classes-body-outschool">Small Classes for kids 8-18: <a href="https://outschool.com" target="_blank" rel="noopener">Outschool.com</a></p>
 
-        <div class="outschool-cta">
-          <img class="outschool-logo" src="assets/outschoollogo.png" alt="Outschool logo" />
-          <a class="cta-btn" href="https://outschool.com/teachers/Kim-Purcell" target="_blank" rel="noopener">
-            Click to Explore my Outschool Writing Classes
-          </a>
-        </div>
+        <h4 class="left-head">Private Lessons</h4>
+        <p class="classes-body">For information about private lessons, go to my contact page and send me a message through the interest form. I schedule privates on Wednesdays from 5-8PM PST, Thursdays from 12-3PM PST, Fridays from 1- 4 PST and Saturdays from 9 to 12 PST. Looking forward to helping you on your writing journey!</p>
+
         <h3 class="centered-head">2025: Schedule for Adult Writing Classes</h3>
         <figure class="classes-figure-write classes-figure-write">
           <img class="classes-img-write" src="assets/writewithkim.png" alt="Adult classes hero">
@@ -219,16 +218,17 @@ function classesHTML() {
         <dl class="kv">
           <div class="kv-row">
             <dt>Cost:</dt>
-            <dd>$400 for 20 Weeks of Classes. 200 if you sign up by December 1st! PLUS: if you finish 60,000 words…</dd>
+            <dd>$400 for 20 Weeks of Classes. 200 if you sign up by December 1st! PLUS: if you finish 60,000 words over the 20 weeks, you will get a 200 dollar coupon to use on a future class or editing!</dd>
           </div>
         </dl>
         <p class="classes-body"><b>The Busy Writer Asynchronous Class:</b> In 100 days of writing, your novel will be finished! You'll receive a weekly email with a video and a skills focus for your writing. Start at any time. Every week, you write a chapter. No time to write? You write a summary of a chapter. No matter what, you move forward in your book. You have the option of an accountability email or text every day for your word count. Once a week, you can send me chapters and questions.</p>
       </section>
     
       <p class="classes-lede">
-        For the FREE BUSY WRITER START-UP PACKAGE email kim@kimpurcell.com
+        For the FREE BUSY WRITER START-UP PACKAGE email <a href="mailto:kim@kimpurcell.com">kim@kimpurcell.com</a>
       </p>
-      <p class="classes-body">Ask for the free package to get you started! It includes the step by step digital PDF with activities to help you brainstorm your story, plot, characters, and world, and ten videos on the core skills you'll need to start writing your book. This is a gift from me to you to get you started. </p>
+      <p class="classes-body">Ask for the free package to get you started! It includes the step by step digital PDF with activities to help you brainstorm your story, plot, characters, and world, and ten videos on the core skills you'll need to start writing your book. This is a gift from me to you to get you started.</p>
+      <p class="classes-body">For private lessons, editing or publishing help visit my contact page and send me a message about your writing goals. Looking forward to working with you!</p>
 
 
       <section class="youtube-block">
@@ -266,11 +266,11 @@ function contactHTML(): string {
   return `
     <section class="section contactwriting">
       <h4 class="classes-lede">Privates, Editing, and Publishing for Adults and Kids</h4>
-      <p class="classes-body"><b>Cost for Privates:</b> 100 for an hour of online live instruction. (On Outschool, it's 100 for 45 minutes). For live in-person in Santa Monica or Culver City, it's 150 per hour. </p>
-      <p class="classes-body"><b>Cost for Editing: </b> I do developmental editing for 100 an hour. I can read and give feedback on around 5000-7500 words in that time period, depending on how much work it needs. </p>
+      <p class="classes-body"><b>Cost for Privates:</b>  125 for 55 minutes of online live instruction. (On Outschool, it's 125 for 45 minutes).  I schedule private lessons on Wednesdays from 5-8PM PST, Thursdays from 12-3PM PST, Fridays from 1- 4 PST and Saturdays from 9 to 12 PST. </p>
+      <p class="classes-body"><b>Cost for Editing: </b>  I do developmental editing for 125 an hour. I can read and give feedback on around 5000-7500 words in that time period, depending on how much work it needs. </p>
     </section>
       <p class="classes-lede-smaller">
-        I help writers publish their books on Lulu.com and Amazon. You can follow my free YouTube video tutorial, or I can guide you through the process for my hourly rate of $100. If you prefer a full-service option where I handle everything, prices range from $500 to $5000 depending on the manuscript’s length, format, and extras. The publishing tutorial is below. 
+       I help writers publish their books on Lulu.com and Amazon. You can follow my free YouTube video tutorial, or I can guide you through the process for my hourly rate of $125. If you prefer a full-service option where I handle everything, prices range from $500 to $5000 depending on the manuscript’s length, format, and extras. The publishing tutorial is below. 
       </p>
 
       <figure class="yt-one">
