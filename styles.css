@@ -694,8 +694,17 @@ body::before{
 /*Text Blocks*/
 
 .left-middle{
-    font-family: "Myriad Pro", Normal, sans-serif;
-  font-weight: 400;
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 400; 
+  color: var(--ink, #111);
+  opacity: .9;
+  line-height: 1.6;
+  font-size: clamp(16px, 1vw + 14px, 22px);
+  max-width: 78ch;
+  margin: 10px auto 22px;
+}
+
+.left-middle-header{
   color: var(--ink, #111);
   opacity: .9;
   line-height: 1.6;
@@ -718,8 +727,8 @@ body::before{
 
 .left-head{
   text-align: left;
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
+  font-family: "Myriad Pro", "Semibold", sans-serif;
+  font-weight: 600; 
   font-size: clamp(16px, 1vw + 14px, 22px);
   margin: 6px auto 4px;
   max-width: 78ch;
