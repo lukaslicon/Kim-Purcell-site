@@ -100,7 +100,7 @@ function booksHTML(): string {
           “A long, beautiful, heart-breaking love letter to potential and possibilities and hope...” - NPR Book Reviews
         </p1>
         <p1>
-        “Part love story, part mystery, this brave novel will make you feel, wonder, and think.” –Tamara Ireland Stone, New York Times best-selling author of Every Last Word
+        “Part love story, part mystery, this brave novel will make you feel, wonder, and think.” -Tamara Ireland Stone, New York Times best-selling author of Every Last Word
         </p1>
         <p class="left-middle-smaller no-bubble"><b>NPR'S BEST BOOKS OF 2018</b></p>
         <p class="left-middle-smaller no-bubble"><b>A MIGHTY GIRL BOOK OF 2018</b></p>
@@ -149,7 +149,7 @@ function booksHTML(): string {
       <p class="left-middle"> Nowadays, everyone is busy: kids, teens, adults. So, how do you fit in the dream of writing a book? The Busy Writer Method is a faster and easier method of writing a book. It's based on research, my experience as a mom and novelist, a journalism degree and an MFA, and twenty years of teaching experience. I've taught thousands of people all over the world how to write, finish, and publish their books using this method.</p>
       <h4 class="left-middle-header">How does it work? You write for at least 15 minutes a day and build your skills in a progressive way.</h4>
       <p class="left-middle">When you learn any new skill, you need to build your skills from the basics. There are progressive skills for storytelling and novel-writing as well. Unfortunately, most of the time it's usually not taught in this way. You're thrown into the deep end. No wonder you feel like you're drowning!.</p>
-      <p class="left-middle">In my class and in my guide, I help you build these skills in a progressive way as you write your draft.  First, develop the characters and the world. Then, you come up with a coherent plot, based on a four-act plot structure. I will give you skills for every time you sit down so you never feel overwhelmed or stuck. You simply open the guide and you know exactly what to do. Dive into your imagination for a minimum of 15 minutes a day and you'll finish a book. I can't wait to cheer you on!</p>
+      <p class="left-middle">In my class and in my guide, I help you build these skills in a progressive way as you write your draft. First, develop the characters and the world. Then, you come up with a coherent plot, based on a four-act plot structure. I will give you skills for every time you sit down so you never feel overwhelmed or stuck. You simply open the guide and you know exactly what to do. Dive into your imagination for a minimum of 15 minutes a day and you'll finish a book. I can't wait to cheer you on!</p>
 
     </section>  
 
@@ -218,7 +218,7 @@ function classesHTML() {
         <dl class="kv">
           <div class="kv-row">
             <dt>Cost:</dt>
-            <dd>$400 for 20 Weeks of Classes. 200 if you sign up by December 1st! PLUS: if you finish 60,000 words over the 20 weeks, you will get a 200 dollar coupon to use on a future class or editing!</dd>
+            <dd>$400USD for 20 Weeks of Classes. $200USD if you sign up by December 1st! PLUS: if you finish 60,000 words over the 20 weeks, you will get a $200USD coupon to use on a future class or editing!</dd>
           </div>
         </dl>
         <p class="classes-body"><b>The Busy Writer Asynchronous Class:</b> In 100 days of writing, your novel will be finished! You'll receive a weekly email with a video and a skills focus for your writing. Start at any time. Every week, you write a chapter. No time to write? You write a summary of a chapter. No matter what, you move forward in your book. You have the option of an accountability email or text every day for your word count. Once a week, you can send me chapters and questions.</p>
@@ -266,11 +266,11 @@ function contactHTML(): string {
   return `
     <section class="section contactwriting">
       <h4 class="classes-lede">Privates, Editing, and Publishing for Adults and Kids</h4>
-      <p class="classes-body"><b>Cost for Privates:</b>  125 for 55 minutes of online live instruction. (On Outschool, it's 125 for 45 minutes).  I schedule private lessons on Wednesdays from 5-8PM PST, Thursdays from 12-3PM PST, Fridays from 1- 4 PST and Saturdays from 9 to 12 PST. </p>
-      <p class="classes-body"><b>Cost for Editing: </b>  I do developmental editing for 125 an hour. I can read and give feedback on around 5000-7500 words in that time period, depending on how much work it needs. </p>
+      <p class="classes-body"><b>Cost for Privates:</b> $125USD for 55 minutes of online live instruction. (On Outschool, it's $125USD for 45 minutes).  I schedule private lessons on Wednesdays from 5-8PM PST, Thursdays from 12-3PM PST, Fridays from 1- 4 PST and Saturdays from 9 to 12 PST. </p>
+      <p class="classes-body"><b>Cost for Editing:</b> I do developmental editing for $125USD an hour. I can read and give feedback on around 5000-7500 words in that time period, depending on how much work it needs. </p>
     </section>
       <p class="classes-lede-smaller">
-       I help writers publish their books on Lulu.com and Amazon. You can follow my free YouTube video tutorial, or I can guide you through the process for my hourly rate of $125. If you prefer a full-service option where I handle everything, prices range from $500 to $5000 depending on the manuscript’s length, format, and extras. The publishing tutorial is below. 
+       I help writers publish their books on Lulu.com and Amazon. You can follow my free YouTube video tutorial, or I can guide you through the process for my hourly rate of $125. If you prefer a full-service option where I handle everything, prices range from $500 to $5000 depending on the manuscript's length, format, and extras. The publishing tutorial is below. 
       </p>
 
       <figure class="yt-one">
