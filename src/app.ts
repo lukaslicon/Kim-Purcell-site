@@ -12,6 +12,7 @@ function getRouteFromHash(): Route {
   return isRoute(raw) ? raw : 'home';
 }
 
+
 const view = document.getElementById('view') as HTMLElement | null;
 const topbar = document.getElementById('primary-nav') as HTMLElement | null;
 const navToggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
@@ -29,6 +30,14 @@ window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); // or 'smooth'
 function setActive(route: Route): void {
   document.querySelectorAll<HTMLAnchorElement>('.nav-link').forEach(a => {
     a.classList.toggle('is-active', (a.dataset.route as Route) === route);
+  });
+}
+
+function resetScrollTop() {
+  window.scrollTo(0, 0);
+  (document.documentElement || document.body).scrollTop = 0;
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   });
 }
 
@@ -336,11 +345,12 @@ document.querySelectorAll<HTMLAnchorElement>('.nav-link[data-route]').forEach(a 
   a.addEventListener('click', (e) => {
     e.preventDefault();
     const r = a.dataset.route;
-    if (!isRoute(r)) return;            // ignore unknown data-route values
-    history.pushState({}, '', `#/${r}`); // use "#/route" to avoid anchor jumps
+    if (!isRoute(r)) return;            
+    history.pushState({}, '', `#/${r}`); 
     onRoute(r);
     view?.focus({ preventScroll: true });
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    resetScrollTop();
   });
 });
 
