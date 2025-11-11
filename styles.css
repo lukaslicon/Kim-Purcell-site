@@ -35,7 +35,7 @@ body::before{
   background: url("assets/background.jpg") center / cover no-repeat;
 }
 
-.container{ width: min(92%, var(--maxw)); margin: 0 auto; }
+.container{ width: min(92%, var(--maxw)); margin: 0 auto; border: 0px; outline: 0px;}
 
 .skip-link{ position:absolute; left:-9999px; top:auto; }
 .skip-link:focus{ left:12px; top:12px; background:#fff; border:1px solid #000; padding:8px 10px; }
