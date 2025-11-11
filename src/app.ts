@@ -153,10 +153,6 @@ function classesHTML() {
         <a href="mailto:kim@kimpurcell.com">kim@kimpurcell.com</a>.
       </p>
 
-      <figure class="classes-figure">
-        <img class="classes-img" src="assets/publish.jpg" alt="Kids and teens writing class" />
-      </figure>
-
       <h3 class="section-subtitle">Online Writing Classes Through Outschool</h3>
 
       <p class="classes-body">
@@ -248,6 +244,11 @@ function contactHTML(): string {
       <p class="classes-lede-smaller">
         I help writers publish their books on Lulu.com and Amazon. You can follow my free YouTube video tutorial, or I can guide you through the process for my hourly rate of $100. If you prefer a full-service option where I handle everything, prices range from $500 to $5000 depending on the manuscript’s length, format, and extras. The publishing tutorial is below. 
       </p>
+
+      <figure class="yt-one">
+        <iframe src="https://www.youtube.com/embed/v7iszKzgkkk?si=gyI_3z3rRRjaQS5w" allowfullscreen></iframe>
+      </figure>
+
     <section class="section contact-card">
       <h2>Contact</h2>
       <p>Questions about books, classes, or events? Send a note:</p>
@@ -261,7 +262,7 @@ function contactHTML(): string {
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="5" required></textarea>
 
-        <button class="book-btn" type="submit">Send</button>
+        <button class="contact-btn" type="submit">Send</button>
       </form>
     </section>
   `;

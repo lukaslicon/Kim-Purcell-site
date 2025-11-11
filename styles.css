@@ -551,6 +551,15 @@ body::before{
   .kv-row{ grid-template-columns: 1fr; } /* stack on small screens */
 }
 
+.contact-btn{
+  display: inline-block; font-weight: 600; text-decoration: none;
+  padding: 10px 14px; border-radius: 30px;
+  background: var(--btn-bg); color: var(--btn-ink);
+  fill-opacity: 80%;
+  width: 100%;
+  text-align: center;
+  border: 0px;
+}
 
 
 
