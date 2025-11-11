@@ -74,7 +74,7 @@ function homeHTML(): string {
           (Penguin's Ten Speed Press), draws on her twenty years of teaching thousands of
           writers to reach their creative goals with less stress and more confidence.
         </p>
-        <a class="book-btn" href="#classes" data-route="classes">Join a Writing Class Today!</a>
+        <a class="home-btn" href="#classes" data-route="classes">Join a Writing Class Today!</a>
       </div>
     </section>
   `;

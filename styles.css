@@ -11,6 +11,9 @@ html, body { height: 100%; margin: 0; padding: 0; }
   --link: #1f2937;            /* nav/link ink */
   --btn-ink: #000;
   --btn-bg: #B1DECC;          /* black buttons */
+  --btn-bg-hover:  #285593;  /* hover/focus */
+  --btn-ink-hover: #fff;
+  --btn-bg-active: #21898b;  /* pressed */
   --maxw: 1080px;
   --radius: 12px;
   --gap: 24px;
@@ -59,7 +62,7 @@ body::before{
   padding: 18px 0 12px;
 }
 .site-title{
-  font-family: "Avenir Next";
+  font-family: Avenir Next, Demibold, sans-serif;
   font-weight: 600;
   font-size: clamp(40px, 4.5vw, 60px);
   letter-spacing: .3px;
@@ -67,6 +70,8 @@ body::before{
   color: #326C6D;
 }
 .site-tagline{
+  font-family: Myriad Pro, Normal, sans-serif;
+  font-weight: 400;
   margin: -4px 0 0; /* pull tagline closer to the title */
   color: var(--btn-ink);
   font-size: clamp(14px, 1.1vw + 10px, 18px);
@@ -297,13 +302,65 @@ body::before{
   font-weight: 600; margin: 0 0 10px;
   font-size: clamp(20px, 2.2vw + 12px, 28px);
 }
-.hero-copy p{ margin: 0 0 12px; color: var(--ink); margin-top: 10px;}
+.hero-copy p{
+  font-family: "Myriad Pro", Normal, sans-serif;
+  margin: 10px 0 12px; 
+  color: var(--ink); 
+  font-weight: 400px;
+}
 .cta{
   display: inline-block; font-weight: 600; text-decoration: none;
   padding: 10px 14px; border-radius: 30px;
   background: var(--btn-bg); color: var(--btn-ink);
   fill-opacity: 80%;
 }
+
+/* home button*/
+.home-btn{
+  display: inline-block;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 30px;
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  width: 100%;
+  text-align: center;
+  font-family: Myriad Pro, Normal, sans-serif;
+  font-weight: 400px;
+  /* nice feel */
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .06s ease;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+/* mouse hover + keyboard focus */
+.home-btn:hover,
+.home-btn:focus-visible{
+  background: linear-gradient(135deg, var(--btn-bg-active),var(--btn-bg-hover));
+  color: var(--btn-ink-hover);
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  transform: translateY(-1px);
+  outline: none; /* we’ll use the focus ring below */
+}
+
+/* accessible focus ring (for non-mouse users) */
+.home-btn:focus-visible{
+  outline: 3px solid rgba(255,255,255,.9);
+  outline-offset: 2px;
+}
+
+/* pressed/tap state (helps on mobile where :hover isn’t a thing) */
+.home-btn:active{
+  background: var(--btn-bg-active);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,.16);
+}
+
+/* optional: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .home-btn{ transition: none; transform: none; }
+}
+
 
 /* Social row */
 .social{
@@ -340,7 +397,7 @@ body::before{
   border: 1px solid var(--rule); background:#f9fafb;
 }
 .book h3{
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Myriad Pro", Normal, sans-serif;
   font-weight: 700;
   margin: 0 0 10px; font-size: clamp(18px, 2vw + 12px, 26px);
 }
@@ -366,6 +423,8 @@ body::before{
 
 /*book quotes */
 .book p1{
+  font-family: "Myriad Pro", "SemiBold", sans-serif;
+  font-weight: 600;
   display: block;               
   margin: 12px 0;              
   padding-left: 12px;
@@ -381,12 +440,47 @@ body::before{
 
 /* buttons for book quotes*/
 .book-btn{
-  display: inline-block; font-weight: 600; text-decoration: none;
-  padding: 10px 14px; border-radius: 30px;
-  background: var(--btn-bg); color: var(--btn-ink);
-  fill-opacity: 80%;
+  display: inline-block;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 30px;
+  background: var(--btn-bg);
+  color: var(--btn-ink);
   width: 100%;
   text-align: center;
+
+  /* nice feel */
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .06s ease;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+/* mouse hover + keyboard focus */
+.book-btn:hover,
+.book-btn:focus-visible{
+  background: linear-gradient(135deg, var(--btn-bg-active),var(--btn-bg-hover));
+  color: var(--btn-ink-hover);
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  transform: translateY(-1px);
+  outline: none; /* we’ll use the focus ring below */
+}
+
+/* accessible focus ring (for non-mouse users) */
+.book-btn:focus-visible{
+  outline: 3px solid rgba(255,255,255,.9);
+  outline-offset: 2px;
+}
+
+/* pressed/tap state (helps on mobile where :hover isn’t a thing) */
+.book-btn:active{
+  background: var(--btn-bg-active);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,.16);
+}
+
+/* optional: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .book-btn{ transition: none; transform: none; }
 }
 
 .btn{
@@ -406,10 +500,6 @@ body::before{
 /* ===== Classes page ===== */
 
 .page-title{
-  text-decoration-line: underline;
-  text-decoration-color: #0f3f35;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 3px; /* gap from text */
   text-align:center;
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 700;
@@ -419,8 +509,8 @@ body::before{
 
 
 .classes-lede{
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 600; 
   line-height: 1.25;
   font-size: clamp(20px, 1.6vw + 18px, 30px);
   text-align: center;
@@ -442,6 +532,8 @@ body::before{
 
 
 .classes-body-outschool{
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 400;
   color: var(--ink, #111);
   opacity: .9;
   line-height: 1.6;
@@ -450,9 +542,21 @@ body::before{
 }
 
 
+.centered-head{
+  text-align: center;
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 600;
+  font-size: clamp(18px, 1.2vw + 16px, 26px);
+  margin: 0px auto 30px;
+  text-decoration-line: underline;
+  text-decoration-color: #0f3f35;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px; /* gap from text */
+}
+
 .section-subtitle{
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 600; 
   font-size: clamp(18px, 1.2vw + 16px, 26px);
   margin: 30px auto 30px;
   text-align: center;
@@ -493,6 +597,8 @@ body::before{
 
 /* Optional: add a bit more breathing room for this page */
 .section.classes{
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 400; 
   padding-top: 8px;
 }
 
@@ -535,28 +641,61 @@ body::before{
   text-decoration: none;
   font-weight: 700;
   font-size: clamp(16px, 1vw + 14px, 20px);
-  background: var(--btn-bg, #cae9df);
-  color: var(--btn-ink, #0f3f35);
+  background: var(--btn-bg);
+  color: var(--btn-ink);
   box-shadow: 0 2px 0 rgba(0,0,0,.06) inset;
-  transition: transform .05s ease, filter .2s ease;
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .06s ease;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
 }
-.cta-btn:hover{ filter: brightness(0.98); }
-.cta-btn:active{ transform: translateY(1px); }
 
-/* Headings under the row */
-.centered-head{
-  text-align: center;
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
-  font-size: clamp(18px, 1.2vw + 16px, 26px);
-  margin: 0px auto 30px;
-  text-decoration-line: underline;
-  text-decoration-color: #0f3f35;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px; /* gap from text */
+/* mouse hover + keyboard focus */
+.cta-btn:hover,
+.cta-btn:focus-visible{
+  background: linear-gradient(135deg, var(--btn-bg-active),var(--btn-bg-hover));
+  color: var(--btn-ink-hover);
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  transform: translateY(-1px);
+  outline: none; /* we’ll use the focus ring below */
 }
+
+
+.cta-btn:focus-visible{
+  outline: 3px solid rgba(255,255,255,.9);
+  outline-offset: 2px;
+}
+
+.cta-btn:active{
+  background: var(--btn-bg-active);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,.16);
+}
+
+
+/* Responsive: stack image above button on small screens */
+@media (max-width: 700px){
+  .outschool-cta{
+    grid-template-columns: 1fr;
+  }
+  .outschool-logo{
+    margin: 0 auto 6px; /* center logo when stacked */
+  }
+  .cta-btn{
+    width: 100%; /* full-width button on mobile */
+  }
+}
+
+/* optional: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .cta-btn{ transition: none; transform: none; }
+}
+
+
+
+/*Text Blocks*/
 
 .left-middle{
+    font-family: "Myriad Pro", Normal, sans-serif;
+  font-weight: 400;
   color: var(--ink, #111);
   opacity: .9;
   line-height: 1.6;
@@ -566,6 +705,8 @@ body::before{
 }
 
 .left-middle-smaller{
+  font-family: "Myriad Pro", Semibold, sans-serif;
+  font-weight: 600;
   color: var(--ink, #111);
   opacity: .9;
   line-height: 1.6;
@@ -582,19 +723,6 @@ body::before{
   font-size: clamp(16px, 1vw + 14px, 22px);
   margin: 6px auto 4px;
   max-width: 78ch;
-}
-
-/* Responsive: stack image above button on small screens */
-@media (max-width: 700px){
-  .outschool-cta{
-    grid-template-columns: 1fr;
-  }
-  .outschool-logo{
-    margin: 0 auto 6px; /* center logo when stacked */
-  }
-  .cta-btn{
-    width: 100%; /* full-width button on mobile */
-  }
 }
 
 /*===== Youtube block styles =====*/
@@ -689,13 +817,24 @@ body::before{
   max-width: 78ch;
   margin: 10px 0 22px;
 }
-.kv dt{ font-weight: 700; white-space: nowrap; margin: 0; }
-.kv dd{ margin: 0; }
+.kv dt{ 
+  font-family: "Myriad Pro", "Bold", sans-serif;
+  font-weight: 700; 
+  white-space: nowrap; 
+  margin: 0; 
+}
+.kv dd{ 
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 400; 
+  margin: 0; 
+}
 @media (max-width: 600px){
   .kv-row{ grid-template-columns: 1fr; } /* stack on small screens */
 }
 
 .contact-btn{
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 400;
   display: inline-block; font-weight: 600; text-decoration: none;
   padding: 10px 14px; border-radius: 30px;
   background: var(--btn-bg); color: var(--btn-ink);
@@ -703,12 +842,52 @@ body::before{
   width: 100%;
   text-align: center;
   border: 0px;
+
+  /* nice feel */
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .06s ease;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+/* mouse hover + keyboard focus */
+.contact-btn:hover,
+.contact-btn:focus-visible{
+  background: linear-gradient(135deg, var(--btn-bg-active),var(--btn-bg-hover));
+  color: var(--btn-ink-hover);
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  transform: translateY(-1px);
+  outline: none; /* we’ll use the focus ring below */
+}
+
+/* accessible focus ring (for non-mouse users) */
+.contacte-btn:focus-visible{
+  outline: 3px solid rgba(255,255,255,.9);
+  outline-offset: 2px;
+}
+
+/* pressed/tap state (helps on mobile where :hover isn’t a thing) */
+.contact-btn:active{
+  background: var(--btn-bg-active);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,.16);
+}
+
+/* optional: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .contact-btn{ transition: none; transform: none; }
 }
 
 
 
+
 /* Contact card & form */
-.contact-card { border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--gap); background: #fff; }
+.contact-card {   
+  font-family: "Myriad Pro", "Normal", sans-serif;
+  font-weight: 400;
+  border: 1px solid var(--rule); 
+  border-radius: var(--radius); 
+  padding: var(--gap); 
+  background: #fff; 
+}
 .contact-form { display:inline ; gap: 12px; max-width: 500px;}
 .contact-form input,
 .contact-form textarea { width: 100%; border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; font: inherit;}
